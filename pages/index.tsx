@@ -11,7 +11,7 @@ import { Wallet } from 'features/wallet';
 const Home: FC = () => {
   return (
     <Layout>
-      <MainTitle>Lido Token Rewards Plan</MainTitle>
+      <MainTitle>Go to arbitrage</MainTitle>
       <MainSubtitle>Claim your tokens</MainSubtitle>
       <Wallet />
       <Block>

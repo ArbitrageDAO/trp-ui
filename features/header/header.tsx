@@ -19,12 +19,12 @@ type Route = {
 
 const routes: Route[] = [
   {
-    name: 'Claim',
+    name: 'DAO',
     path: '/',
     icon: null,
   },
   {
-    name: 'Snapshot',
+    name: 'Arbitrage',
     path: '/snapshot',
     icon: null,
   },
