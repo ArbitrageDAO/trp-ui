@@ -11,7 +11,7 @@ export const useErrorMessage = (): string | undefined => {
       ({ chainId, name }) => CHAINS[chainId] || name,
     );
     const lastChain = chains.pop();
-
+    console.log('chains: ', chains, supportedChains);
     return [chains.join(', '), lastChain].filter((chain) => chain).join(' or ');
   }, [supportedChains]);
 

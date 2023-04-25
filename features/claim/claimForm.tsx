@@ -19,16 +19,15 @@ import { NoProgramStyled } from './styles';
 import { useWeb3 } from 'reef-knot';
 import { WalletConnect } from 'features/wallet';
 import { useClaimingContext } from './claimingProvider';
-import { SelectVesting } from 'features/vesting/selectVesting';
 import { InputGroupStyled } from 'shared/ui';
-import { InputAmount } from 'shared/ui/inputAmount';
+import { SelectStrategy } from 'features/vesting/selectStrategy';
 
 export const ClaimForm: FC = () => {
   const { currentVesting, isLoading } = useVestingsContext();
   const { isClaiming, setIsClaiming } = useClaimingContext();
 
   const [amountTouched, setAmountTouched] = useState(false);
-  const [amount, setAmount] = useState('');
+  const [amount] = useState('');
 
   const [addressTouched, setAddressTouched] = useState(false);
   const [address, setAddress] = useState('');
@@ -86,16 +85,11 @@ export const ClaimForm: FC = () => {
   return (
     <form onSubmit={handleClaim}>
       <InputGroupStyled fullwidth error={amountRenderedError}>
-        <SelectVesting error={amountRenderedError} />
-        <InputAmount
-          fullwidth
-          label="Token amount"
-          value={amount}
-          onChange={setAmount}
-          maxValue={unclaimed}
-          error={amountRenderedError}
-          maxDisabled={account == null}
-        />
+        {/* <Input readOnly value='' style={{ fontWeight: 'bold' }} leftDecorator={<>Strategy</>} /> */}
+        <Button variant="translucent" color="secondary">
+          Strategy
+        </Button>
+        <SelectStrategy />
       </InputGroupStyled>
       <InputCustomAddress
         value={address}
@@ -109,7 +103,7 @@ export const ClaimForm: FC = () => {
           disabled={disabled}
           onClick={handleClaim}
         >
-          Claim
+          Create
         </Button>
       ) : (
         <WalletConnect fullwidth />

@@ -11,13 +11,13 @@ import { Wallet } from 'features/wallet';
 const Home: FC = () => {
   return (
     <Layout>
-      <MainTitle>Go to arbitrage</MainTitle>
+      <MainTitle>Go to arbitrage !</MainTitle>
       <MainSubtitle>Claim your tokens</MainSubtitle>
       <Wallet />
       <Block>
         <ClaimForm />
       </Block>
-      <Section title="FAQ">
+      <Section title="DAO">
         <FAQ />
       </Section>
     </Layout>

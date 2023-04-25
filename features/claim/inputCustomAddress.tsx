@@ -79,7 +79,7 @@ export const InputCustomAddress: FC<InputCustomAddressProps> = ({
   } else {
     return (
       <ToggleLink onClick={handleClaimAnotherAddress}>
-        Claim to another address
+        Create an arbitrage dao
       </ToggleLink>
     );
   }
