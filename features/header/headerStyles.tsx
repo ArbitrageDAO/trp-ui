@@ -99,7 +99,7 @@ export const HeaderLogoStyle = styled.div`
   margin-right: ${({ theme }) => theme.spaceMap.xxl}px;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    width: 14px;
+    width: 66px;
   }
 `;
 

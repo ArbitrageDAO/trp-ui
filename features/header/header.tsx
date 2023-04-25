@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import Link from 'next/link';
-import { LidoLogo } from '@lidofinance/lido-ui';
+import Logo from './logo';
 import {
   HeaderStyle,
   HeaderLogoStyle,
@@ -37,7 +37,7 @@ export const Header: FC = () => {
     <HeaderStyle size="full" forwardedAs="header">
       <HeaderLogoStyle>
         <Link href="/">
-          <LidoLogo />
+          <Logo style={{ height: 46, maxWidth: 66 }} />
         </Link>
       </HeaderLogoStyle>
 
