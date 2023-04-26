@@ -1,22 +1,19 @@
 import { Block, Button } from '@lidofinance/lido-ui';
 import { useVestingSnapshotDelegate } from 'features/vesting';
-import { SelectVesting } from 'features/vesting/selectVesting';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { InputGroupStyled } from 'shared/ui';
-import { InputAddress, addressValidator } from 'shared/ui/inputAddress';
+import { InputAmount } from 'shared/ui/inputAmount';
 import { Form } from './snapshotFormStyles';
 import { useVotingEncodeSnapshotCalldata } from './useVotingAdapter';
+import SelectParticipation from 'features/vesting/selectParticipation ';
 
 type SnapshotFormData = {
   delegateAddress: string;
 };
 
-const validateAddress = addressValidator();
-
 export const SnapshotForm = () => {
   const {
-    register,
     handleSubmit,
     formState: { isValid, errors },
   } = useForm<SnapshotFormData>({ mode: 'onChange' });
@@ -40,18 +37,37 @@ export const SnapshotForm = () => {
           fullwidth
           error={errors.delegateAddress?.message?.toString()}
         >
-          <SelectVesting error={errors.delegateAddress != null} />
-          <InputAddress
-            fullwidth
-            label="Delegate to address"
-            error={errors.delegateAddress != null}
-            {...register('delegateAddress', {
-              validate: validateAddress,
-              required: true,
-            })}
-          />
+          {/* <SelectVesting error={errors.delegateAddress != null} /> */}
+          <SelectParticipation />
         </InputGroupStyled>
-
+        {/* <InputAddress
+          fullwidth
+          label="Delegate to address"
+          error={errors.delegateAddress != null}
+          {...register('delegateAddress', {
+            validate: validateAddress,
+            required: true,
+          })}
+        /> */}
+        <InputAmount
+          style={{ marginBottom: 16 }}
+          leftDecorator={
+            <>
+              <Button size="xxs" variant="translucent">
+                BTC
+              </Button>
+              &nbsp;&nbsp;
+              <Button size="xxs" variant="translucent" color="warning">
+                Short
+              </Button>
+            </>
+          }
+          rightDecorator={
+            <Button size="xxs" variant="translucent" color="secondary">
+              $
+            </Button>
+          }
+        />
         <Button type="submit" disabled={!isValid}>
           Delegate
         </Button>

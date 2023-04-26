@@ -14,6 +14,7 @@ export const InputAmount: FC<InputAmountProps> = ({
   maxValue,
   error,
   maxDisabled = false,
+  rightDecorator,
   ...rest
 }) => {
   const handleChange = useCallback(
@@ -26,14 +27,16 @@ export const InputAmount: FC<InputAmountProps> = ({
   return (
     <Input
       rightDecorator={
-        <Button
-          size="xxs"
-          variant="translucent"
-          disabled={maxDisabled}
-          onClick={() => onChange?.(formatEther(maxValue.data || '0'))}
-        >
-          Max
-        </Button>
+        rightDecorator || (
+          <Button
+            size="xxs"
+            variant="translucent"
+            disabled={maxDisabled}
+            onClick={() => onChange?.(formatEther(maxValue.data || '0'))}
+          >
+            Max
+          </Button>
+        )
       }
       onChange={handleChange}
       error={error != null}

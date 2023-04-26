@@ -9,3 +9,15 @@ export enum Strategy {
   SHARE = 'share',
   EVENT = 'event',
 }
+
+export enum PartiOperations {
+  DEPOSIT = 'deposit',
+  ENTRY = 'entry',
+  LIQUID = 'liquid',
+  WITHDRAW = 'withdraw',
+}
+
+export enum PartiOptions {
+  PARTICIPATION = 'participation',
+  NON_PARTICIPATION = 'non-participation',
+}

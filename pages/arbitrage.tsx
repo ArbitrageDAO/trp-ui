@@ -8,8 +8,8 @@ import { SnapshotForm } from 'features/snapshot';
 const Snapshot: FC = () => {
   return (
     <Layout>
-      <MainTitle>Lido Token Rewards Plan</MainTitle>
-      <MainSubtitle>Vote on Snapshot</MainSubtitle>
+      <MainTitle>Go to arbitrage !</MainTitle>
+      <MainSubtitle>Claim your tokens</MainSubtitle>
       <Wallet />
       <SnapshotForm />
     </Layout>

@@ -25,7 +25,7 @@ const routes: Route[] = [
   },
   {
     name: 'Arbitrage',
-    path: '/snapshot',
+    path: '/arbitrage',
     icon: null,
   },
 ];
