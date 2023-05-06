@@ -1,0 +1,6930 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_strategy",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "onwer",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "manager",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newManager",
+          "type": "address"
+        }
+      ],
+      "name": "ManagerTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipOffered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "arbitrage",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "claimOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amountOutMinimum",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint160",
+          "name": "sqrtPriceLimitX96",
+          "type": "uint160"
+        }
+      ],
+      "name": "closePostion",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "manager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amountOutMinimum",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint160",
+          "name": "sqrtPriceLimitX96",
+          "type": "uint160"
+        }
+      ],
+      "name": "openPostion",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pendingOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "propurse",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_arbitrage",
+          "type": "address"
+        }
+      ],
+      "name": "setArbitrage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "strategy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "14": "contracts/Government.sol",
+    "16": "contracts/extern/Manageable.sol",
+    "20": "contracts/interface/IArbitrage.sol",
+    "24": "contracts/interface/IStrategy.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/Government.sol",
+    "exportedSymbols": {
+      "GovDao": [722],
+      "IArbitrage": [2082],
+      "IStrategy": [2092],
+      "Manageable": [1328],
+      "Ownable": [1263]
+    },
+    "id": 723,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 620,
+        "literals": ["solidity", "^", "0.8", ".0"],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:14"
+      },
+      {
+        "absolutePath": "contracts/interface/IArbitrage.sol",
+        "file": "./interface/IArbitrage.sol",
+        "id": 621,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 723,
+        "sourceUnit": 2083,
+        "src": "25:36:14",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "contracts/interface/IStrategy.sol",
+        "file": "./interface/IStrategy.sol",
+        "id": 622,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 723,
+        "sourceUnit": 2093,
+        "src": "63:35:14",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "contracts/extern/Manageable.sol",
+        "file": "./extern/Manageable.sol",
+        "id": 623,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 723,
+        "sourceUnit": 1329,
+        "src": "100:33:14",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 624,
+              "name": "Manageable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 1328,
+              "src": "154:10:14"
+            },
+            "id": 625,
+            "nodeType": "InheritanceSpecifier",
+            "src": "154:10:14"
+          }
+        ],
+        "canonicalName": "GovDao",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 722,
+        "linearizedBaseContracts": [722, 1328, 1263],
+        "name": "GovDao",
+        "nameLocation": "144:6:14",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "69c8d338",
+            "id": 627,
+            "mutability": "mutable",
+            "name": "arbitrage",
+            "nameLocation": "187:9:14",
+            "nodeType": "VariableDeclaration",
+            "scope": 722,
+            "src": "172:24:14",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 626,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "172:7:14",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "a8c62e76",
+            "id": 629,
+            "mutability": "mutable",
+            "name": "strategy",
+            "nameLocation": "218:8:14",
+            "nodeType": "VariableDeclaration",
+            "scope": 722,
+            "src": "203:23:14",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 628,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "203:7:14",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "70b9ee7b",
+            "id": 631,
+            "mutability": "mutable",
+            "name": "propurse",
+            "nameLocation": "248:8:14",
+            "nodeType": "VariableDeclaration",
+            "scope": 722,
+            "src": "233:23:14",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 630,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "233:7:14",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 650,
+              "nodeType": "Block",
+              "src": "359:39:14",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 648,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 646,
+                      "name": "strategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 629,
+                      "src": "370:8:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 647,
+                      "name": "_strategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 633,
+                      "src": "381:9:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "370:20:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 649,
+                  "nodeType": "ExpressionStatement",
+                  "src": "370:20:14"
+                }
+              ]
+            },
+            "id": 651,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "id": 640,
+                    "name": "onwer",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 635,
+                    "src": "333:5:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                ],
+                "id": 641,
+                "kind": "baseConstructorSpecifier",
+                "modifierName": {
+                  "id": 639,
+                  "name": "Ownable",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 1263,
+                  "src": "325:7:14"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "325:14:14"
+              },
+              {
+                "arguments": [
+                  {
+                    "id": 643,
+                    "name": "manager",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 637,
+                    "src": "351:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                ],
+                "id": 644,
+                "kind": "baseConstructorSpecifier",
+                "modifierName": {
+                  "id": 642,
+                  "name": "Manageable",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 1328,
+                  "src": "340:10:14"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "340:19:14"
+              }
+            ],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 638,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 633,
+                  "mutability": "mutable",
+                  "name": "_strategy",
+                  "nameLocation": "283:9:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 651,
+                  "src": "275:17:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 632,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "275:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 635,
+                  "mutability": "mutable",
+                  "name": "onwer",
+                  "nameLocation": "302:5:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 651,
+                  "src": "294:13:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 634,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "294:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 637,
+                  "mutability": "mutable",
+                  "name": "manager",
+                  "nameLocation": "317:7:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 651,
+                  "src": "309:15:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 636,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "309:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "274:51:14"
+            },
+            "returnParameters": {
+              "id": 645,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "359:0:14"
+            },
+            "scope": 722,
+            "src": "263:135:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 662,
+              "nodeType": "Block",
+              "src": "468:41:14",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 660,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 658,
+                      "name": "arbitrage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 627,
+                      "src": "479:9:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 659,
+                      "name": "_arbitrage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 653,
+                      "src": "491:10:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "479:22:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 661,
+                  "nodeType": "ExpressionStatement",
+                  "src": "479:22:14"
+                }
+              ]
+            },
+            "functionSelector": "d6696d56",
+            "id": 663,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 656,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 655,
+                  "name": "onlyManager",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 1307,
+                  "src": "457:11:14"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "457:11:14"
+              }
+            ],
+            "name": "setArbitrage",
+            "nameLocation": "415:12:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 654,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 653,
+                  "mutability": "mutable",
+                  "name": "_arbitrage",
+                  "nameLocation": "436:10:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 663,
+                  "src": "428:18:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 652,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "428:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "427:20:14"
+            },
+            "returnParameters": {
+              "id": 657,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "468:0:14"
+            },
+            "scope": 722,
+            "src": "406:103:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 691,
+              "nodeType": "Block",
+              "src": "631:168:14",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 674,
+                        "name": "propurse",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 631,
+                        "src": "669:8:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 671,
+                            "name": "strategy",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 629,
+                            "src": "652:8:14",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 670,
+                          "name": "IStrategy",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2092,
+                          "src": "642:9:14",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IStrategy_$2092_$",
+                            "typeString": "type(contract IStrategy)"
+                          }
+                        },
+                        "id": 672,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "642:19:14",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IStrategy_$2092",
+                          "typeString": "contract IStrategy"
+                        }
+                      },
+                      "id": 673,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "active",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2091,
+                      "src": "642:26:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$_t_bool_$",
+                        "typeString": "function (uint256) external returns (bool)"
+                      }
+                    },
+                    "id": 675,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "642:36:14",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 676,
+                  "nodeType": "ExpressionStatement",
+                  "src": "642:36:14"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 681,
+                        "name": "amountOutMinimum",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 665,
+                        "src": "723:16:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "id": 682,
+                        "name": "sqrtPriceLimitX96",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 667,
+                        "src": "741:17:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint160",
+                          "typeString": "uint160"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint160",
+                          "typeString": "uint160"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 678,
+                            "name": "arbitrage",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 627,
+                            "src": "700:9:14",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 677,
+                          "name": "IArbitrage",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2082,
+                          "src": "689:10:14",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IArbitrage_$2082_$",
+                            "typeString": "type(contract IArbitrage)"
+                          }
+                        },
+                        "id": 679,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "689:21:14",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IArbitrage_$2082",
+                          "typeString": "contract IArbitrage"
+                        }
+                      },
+                      "id": 680,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "openPostion",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2074,
+                      "src": "689:33:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$_t_uint160_$returns$__$",
+                        "typeString": "function (uint256,uint160) external"
+                      }
+                    },
+                    "id": 683,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "689:70:14",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 684,
+                  "nodeType": "ExpressionStatement",
+                  "src": "689:70:14"
+                },
+                {
+                  "expression": {
+                    "id": 689,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 685,
+                      "name": "propurse",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 631,
+                      "src": "770:8:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 688,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 686,
+                        "name": "propurse",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 631,
+                        "src": "781:8:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "+",
+                      "rightExpression": {
+                        "hexValue": "31",
+                        "id": 687,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "790:1:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      "src": "781:10:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "770:21:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 690,
+                  "nodeType": "ExpressionStatement",
+                  "src": "770:21:14"
+                }
+              ]
+            },
+            "functionSelector": "44c2b6d0",
+            "id": 692,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "openPostion",
+            "nameLocation": "526:11:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 668,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 665,
+                  "mutability": "mutable",
+                  "name": "amountOutMinimum",
+                  "nameLocation": "556:16:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 692,
+                  "src": "548:24:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 664,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "548:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 667,
+                  "mutability": "mutable",
+                  "name": "sqrtPriceLimitX96",
+                  "nameLocation": "591:17:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 692,
+                  "src": "583:25:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 666,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "583:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "537:78:14"
+            },
+            "returnParameters": {
+              "id": 669,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "631:0:14"
+            },
+            "scope": 722,
+            "src": "517:282:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 720,
+              "nodeType": "Block",
+              "src": "922:169:14",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 703,
+                        "name": "propurse",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 631,
+                        "src": "960:8:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 700,
+                            "name": "strategy",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 629,
+                            "src": "943:8:14",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 699,
+                          "name": "IStrategy",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2092,
+                          "src": "933:9:14",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IStrategy_$2092_$",
+                            "typeString": "type(contract IStrategy)"
+                          }
+                        },
+                        "id": 701,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "933:19:14",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IStrategy_$2092",
+                          "typeString": "contract IStrategy"
+                        }
+                      },
+                      "id": 702,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "active",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2091,
+                      "src": "933:26:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$_t_bool_$",
+                        "typeString": "function (uint256) external returns (bool)"
+                      }
+                    },
+                    "id": 704,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "933:36:14",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 705,
+                  "nodeType": "ExpressionStatement",
+                  "src": "933:36:14"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 710,
+                        "name": "amountOutMinimum",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 694,
+                        "src": "1015:16:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "id": 711,
+                        "name": "sqrtPriceLimitX96",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 696,
+                        "src": "1033:17:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint160",
+                          "typeString": "uint160"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint160",
+                          "typeString": "uint160"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 707,
+                            "name": "arbitrage",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 627,
+                            "src": "991:9:14",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 706,
+                          "name": "IArbitrage",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2082,
+                          "src": "980:10:14",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IArbitrage_$2082_$",
+                            "typeString": "type(contract IArbitrage)"
+                          }
+                        },
+                        "id": 708,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "980:21:14",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IArbitrage_$2082",
+                          "typeString": "contract IArbitrage"
+                        }
+                      },
+                      "id": 709,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "closePostion",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 2081,
+                      "src": "980:34:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$_t_uint160_$returns$__$",
+                        "typeString": "function (uint256,uint160) external"
+                      }
+                    },
+                    "id": 712,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "980:71:14",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 713,
+                  "nodeType": "ExpressionStatement",
+                  "src": "980:71:14"
+                },
+                {
+                  "expression": {
+                    "id": 718,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 714,
+                      "name": "propurse",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 631,
+                      "src": "1062:8:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 717,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 715,
+                        "name": "propurse",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 631,
+                        "src": "1073:8:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "+",
+                      "rightExpression": {
+                        "hexValue": "31",
+                        "id": 716,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1082:1:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      "src": "1073:10:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1062:21:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 719,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1062:21:14"
+                }
+              ]
+            },
+            "functionSelector": "7ef45fde",
+            "id": 721,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "closePostion",
+            "nameLocation": "816:12:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 697,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 694,
+                  "mutability": "mutable",
+                  "name": "amountOutMinimum",
+                  "nameLocation": "847:16:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 721,
+                  "src": "839:24:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 693,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "839:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 696,
+                  "mutability": "mutable",
+                  "name": "sqrtPriceLimitX96",
+                  "nameLocation": "882:17:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 721,
+                  "src": "874:25:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 695,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "874:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "828:78:14"
+            },
+            "returnParameters": {
+              "id": 698,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "922:0:14"
+            },
+            "scope": 722,
+            "src": "807:284:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 723,
+        "src": "135:963:14",
+        "usedErrors": []
+      }
+    ],
+    "src": "0:1100:14"
+  },
+  "bytecode": "608060405234801561001057600080fd5b5060405161083238038061083283398101604081905261002f916100df565b808261003a81610073565b50600280546001600160a01b039283166001600160a01b0319918216179091556004805495909216941693909317909255506101229050565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b80516001600160a01b03811681146100da57600080fd5b919050565b6000806000606084860312156100f457600080fd5b6100fd846100c3565b925061010b602085016100c3565b9150610119604085016100c3565b90509250925092565b610701806101316000396000f3fe608060405234801561001057600080fd5b50600436106100b45760003560e01c80637ef45fde116100715780637ef45fde146101325780638da5cb5b14610145578063a8c62e7614610156578063d6696d5614610169578063e30c39781461017c578063f2fde38b1461018d57600080fd5b806344c2b6d0146100b9578063481c6a75146100ce5780634e71e0c8146100f857806369c8d3381461010057806370b9ee7b14610113578063715018a61461012a575b600080fd5b6100cc6100c736600461062f565b6101a0565b005b6002546001600160a01b03165b6040516001600160a01b0390911681526020015b60405180910390f35b6100cc61028c565b6003546100db906001600160a01b031681565b61011c60055481565b6040519081526020016100ef565b6100cc610312565b6100cc61014036600461062f565b610382565b6000546001600160a01b03166100db565b6004546100db906001600160a01b031681565b6100cc61017736600461065f565b61042a565b6001546001600160a01b03166100db565b6100cc61019b36600461065f565b6104b5565b60048054600554604051638033d58160e01b8152928301526001600160a01b031690638033d581906024016020604051808303816000875af11580156101ea573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061020e9190610683565b5060035460405163044c2b6d60e41b8152600481018490526001600160a01b038381166024830152909116906344c2b6d0906044015b600060405180830381600087803b15801561025e57600080fd5b505af1158015610272573d6000803e3d6000fd5b50505050600554600161028591906106a5565b6005555050565b6001546001600160a01b031633146102eb5760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e65720060448201526064015b60405180910390fd5b600154610300906001600160a01b03166105c7565b600180546001600160a01b0319169055565b336103256000546001600160a01b031690565b6001600160a01b0316146103765760405162461bcd60e51b815260206004820152601860248201527727bbb730b1363297b1b0b63632b916b737ba16b7bbb732b960411b60448201526064016102e2565b61038060006105c7565b565b60048054600554604051638033d58160e01b8152928301526001600160a01b031690638033d581906024016020604051808303816000875af11580156103cc573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103f09190610683565b50600354604051633f7a2fef60e11b8152600481018490526001600160a01b03838116602483015290911690637ef45fde90604401610244565b3361043d6002546001600160a01b031690565b6001600160a01b0316146104935760405162461bcd60e51b815260206004820152601d60248201527f4d616e61676561626c652f63616c6c65722d6e6f742d6d616e6167657200000060448201526064016102e2565b600380546001600160a01b0319166001600160a01b0392909216919091179055565b336104c86000546001600160a01b031690565b6001600160a01b0316146105195760405162461bcd60e51b815260206004820152601860248201527727bbb730b1363297b1b0b63632b916b737ba16b7bbb732b960411b60448201526064016102e2565b6001600160a01b03811661057d5760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d6164604482015264647265737360d81b60648201526084016102e2565b600180546001600160a01b0319166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6001600160a01b038116811461062c57600080fd5b50565b6000806040838503121561064257600080fd5b82359150602083013561065481610617565b809150509250929050565b60006020828403121561067157600080fd5b813561067c81610617565b9392505050565b60006020828403121561069557600080fd5b8151801515811461067c57600080fd5b600082198211156106c657634e487b7160e01b600052601160045260246000fd5b50019056fea2646970667358221220bc51cb6353b97619b066a3c0ce241ebf067ae8babe7e9e6ec02d39a2fafb2d7164736f6c634300080f0033",
+  "bytecodeSha1": "936d441f2a66d037e37cad98d01f9db192448cd8",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "version": "0.8.15+commit.e14f2714"
+  },
+  "contractName": "GovDao",
+  "coverageMap": {
+    "branches": {
+      "14": {},
+      "16": {
+        "Manageable.manager": {
+          "17": [7003, 7026, true]
+        },
+        "Ownable.owner": {
+          "18": [4831, 4852, true]
+        },
+        "Ownable.transferOwnership": {
+          "19": [3804, 3827, true]
+        }
+      },
+      "20": {},
+      "24": {}
+    },
+    "statements": {
+      "14": {
+        "GovDao.closePostion": {
+          "9": [933, 969],
+          "10": [980, 1051]
+        },
+        "GovDao.openPostion": {
+          "3": [642, 678],
+          "4": [689, 759],
+          "5": [770, 791]
+        },
+        "GovDao.setArbitrage": {
+          "11": [479, 501]
+        }
+      },
+      "16": {
+        "Manageable.manager": {
+          "0": [5814, 5829]
+        },
+        "Ownable._setOwner": {
+          "15": [4556, 4574],
+          "16": [4585, 4632]
+        },
+        "Ownable.claimOwnership": {
+          "6": [4191, 4215],
+          "7": [4226, 4252]
+        },
+        "Ownable.owner": {
+          "1": [2821, 2834]
+        },
+        "Ownable.pendingOwner": {
+          "2": [3038, 3058]
+        },
+        "Ownable.renounceOwnership": {
+          "8": [3536, 3557]
+        },
+        "Ownable.transferOwnership": {
+          "12": [3796, 3869],
+          "13": [3882, 3907],
+          "14": [3920, 3952]
+        }
+      },
+      "20": {},
+      "24": {}
+    }
+  },
+  "dependencies": ["IArbitrage", "IStrategy", "Manageable", "Ownable"],
+  "deployedBytecode": "608060405234801561001057600080fd5b50600436106100b45760003560e01c80637ef45fde116100715780637ef45fde146101325780638da5cb5b14610145578063a8c62e7614610156578063d6696d5614610169578063e30c39781461017c578063f2fde38b1461018d57600080fd5b806344c2b6d0146100b9578063481c6a75146100ce5780634e71e0c8146100f857806369c8d3381461010057806370b9ee7b14610113578063715018a61461012a575b600080fd5b6100cc6100c736600461062f565b6101a0565b005b6002546001600160a01b03165b6040516001600160a01b0390911681526020015b60405180910390f35b6100cc61028c565b6003546100db906001600160a01b031681565b61011c60055481565b6040519081526020016100ef565b6100cc610312565b6100cc61014036600461062f565b610382565b6000546001600160a01b03166100db565b6004546100db906001600160a01b031681565b6100cc61017736600461065f565b61042a565b6001546001600160a01b03166100db565b6100cc61019b36600461065f565b6104b5565b60048054600554604051638033d58160e01b8152928301526001600160a01b031690638033d581906024016020604051808303816000875af11580156101ea573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061020e9190610683565b5060035460405163044c2b6d60e41b8152600481018490526001600160a01b038381166024830152909116906344c2b6d0906044015b600060405180830381600087803b15801561025e57600080fd5b505af1158015610272573d6000803e3d6000fd5b50505050600554600161028591906106a5565b6005555050565b6001546001600160a01b031633146102eb5760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e65720060448201526064015b60405180910390fd5b600154610300906001600160a01b03166105c7565b600180546001600160a01b0319169055565b336103256000546001600160a01b031690565b6001600160a01b0316146103765760405162461bcd60e51b815260206004820152601860248201527727bbb730b1363297b1b0b63632b916b737ba16b7bbb732b960411b60448201526064016102e2565b61038060006105c7565b565b60048054600554604051638033d58160e01b8152928301526001600160a01b031690638033d581906024016020604051808303816000875af11580156103cc573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103f09190610683565b50600354604051633f7a2fef60e11b8152600481018490526001600160a01b03838116602483015290911690637ef45fde90604401610244565b3361043d6002546001600160a01b031690565b6001600160a01b0316146104935760405162461bcd60e51b815260206004820152601d60248201527f4d616e61676561626c652f63616c6c65722d6e6f742d6d616e6167657200000060448201526064016102e2565b600380546001600160a01b0319166001600160a01b0392909216919091179055565b336104c86000546001600160a01b031690565b6001600160a01b0316146105195760405162461bcd60e51b815260206004820152601860248201527727bbb730b1363297b1b0b63632b916b737ba16b7bbb732b960411b60448201526064016102e2565b6001600160a01b03811661057d5760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d6164604482015264647265737360d81b60648201526084016102e2565b600180546001600160a01b0319166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6001600160a01b038116811461062c57600080fd5b50565b6000806040838503121561064257600080fd5b82359150602083013561065481610617565b809150509250929050565b60006020828403121561067157600080fd5b813561067c81610617565b9392505050565b60006020828403121561069557600080fd5b8151801515811461067c57600080fd5b600082198211156106c657634e487b7160e01b600052601160045260246000fd5b50019056fea2646970667358221220bc51cb6353b97619b066a3c0ce241ebf067ae8babe7e9e6ec02d39a2fafb2d7164736f6c634300080f0033",
+  "deployedSourceMap": "135:963:14:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;517:282;;;;;;:::i;:::-;;:::i;:::-;;5746:91:16;5821:8;;-1:-1:-1;;;;;5821:8:16;5746:91;;;-1:-1:-1;;;;;634:32:27;;;616:51;;604:2;589:18;5746:91:16;;;;;;;;4128:132;;;:::i;172:24:14:-;;;;;-1:-1:-1;;;;;172:24:14;;;233:23;;;;;;;;;824:25:27;;;812:2;797:18;233:23:14;678:177:27;3469:96:16;;;:::i;807:284:14:-;;;;;;:::i;:::-;;:::i;2755:87:16:-;2801:7;2828:6;-1:-1:-1;;;;;2828:6:16;2755:87;;203:23:14;;;;;-1:-1:-1;;;;;203:23:14;;;406:103;;;;;;:::i;:::-;;:::i;2963::16:-;3045:13;;-1:-1:-1;;;;;3045:13:16;2963:103;;3720:240;;;;;;:::i;:::-;;:::i;517:282:14:-;652:8;;;669;;642:36;;-1:-1:-1;;;642:36:14;;;;;824:25:27;-1:-1:-1;;;;;652:8:14;;642:26;;797:18:27;;642:36:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;700:9:14;;689:70;;-1:-1:-1;;;689:70:14;;;;;1568:25:27;;;-1:-1:-1;;;;;1629:32:27;;;1609:18;;;1602:60;700:9:14;;;;689:33;;1541:18:27;;689:70:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;781:8;;790:1;781:10;;;;:::i;:::-;770:8;:21;-1:-1:-1;;517:282:14:o;4128:132:16:-;5062:13;;-1:-1:-1;;;;;5062:13:16;5048:10;:27;5040:71;;;;-1:-1:-1;;;5040:71:16;;2105:2:27;5040:71:16;;;2087:21:27;2144:2;2124:18;;;2117:30;2183:33;2163:18;;;2156:61;2234:18;;5040:71:16;;;;;;;;;4201:13:::1;::::0;4191:24:::1;::::0;-1:-1:-1;;;;;4201:13:16::1;4191:9;:24::i;:::-;4226:13;:26:::0;;-1:-1:-1;;;;;;4226:26:16::1;::::0;;4128:132::o;3469:96::-;4842:10;4831:7;2801;2828:6;-1:-1:-1;;;;;2828:6:16;;2755:87;4831:7;-1:-1:-1;;;;;4831:21:16;;4823:58;;;;-1:-1:-1;;;4823:58:16;;2465:2:27;4823:58:16;;;2447:21:27;2504:2;2484:18;;;2477:30;-1:-1:-1;;;2523:18:27;;;2516:54;2587:18;;4823:58:16;2263:348:27;4823:58:16;3536:21:::1;3554:1;3536:9;:21::i;:::-;3469:96::o:0;807:284:14:-;943:8;;;960;;933:36;;-1:-1:-1;;;933:36:14;;;;;824:25:27;-1:-1:-1;;;;;943:8:14;;933:26;;797:18:27;;933:36:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;991:9:14;;980:71;;-1:-1:-1;;;980:71:14;;;;;1568:25:27;;;-1:-1:-1;;;;;1629:32:27;;;1609:18;;;1602:60;991:9:14;;;;980:34;;1541:18:27;;980:71:14;1394:274:27;406:103:14;7016:10:16;7003:9;5821:8;;-1:-1:-1;;;;;5821:8:16;;5746:91;7003:9;-1:-1:-1;;;;;7003:23:16;;6995:65;;;;-1:-1:-1;;;6995:65:16;;2818:2:27;6995:65:16;;;2800:21:27;2857:2;2837:18;;;2830:30;2896:31;2876:18;;;2869:59;2945:18;;6995:65:16;2616:353:27;6995:65:16;479:9:14::1;:22:::0;;-1:-1:-1;;;;;;479:22:14::1;-1:-1:-1::0;;;;;479:22:14;;;::::1;::::0;;;::::1;::::0;;406:103::o;3720:240:16:-;4842:10;4831:7;2801;2828:6;-1:-1:-1;;;;;2828:6:16;;2755:87;4831:7;-1:-1:-1;;;;;4831:21:16;;4823:58;;;;-1:-1:-1;;;4823:58:16;;2465:2:27;4823:58:16;;;2447:21:27;2504:2;2484:18;;;2477:30;-1:-1:-1;;;2523:18:27;;;2516:54;2587:18;;4823:58:16;2263:348:27;4823:58:16;-1:-1:-1;;;;;3804:23:16;::::1;3796:73;;;::::0;-1:-1:-1;;;3796:73:16;;3176:2:27;3796:73:16::1;::::0;::::1;3158:21:27::0;3215:2;3195:18;;;3188:30;3254:34;3234:18;;;3227:62;-1:-1:-1;;;3305:18:27;;;3298:35;3350:19;;3796:73:16::1;2974:401:27::0;3796:73:16::1;3882:13;:25:::0;;-1:-1:-1;;;;;;3882:25:16::1;-1:-1:-1::0;;;;;3882:25:16;::::1;::::0;;::::1;::::0;;;3925:27:::1;::::0;::::1;::::0;-1:-1:-1;;3925:27:16::1;3720:240:::0;:::o;4462:178::-;4519:17;4539:6;;-1:-1:-1;;;;;4556:18:16;;;-1:-1:-1;;;;;;4556:18:16;;;;;;4590:42;;4539:6;;;;;;;4590:42;;4519:17;4590:42;4508:132;4462:178;:::o;14:131:27:-;-1:-1:-1;;;;;89:31:27;;79:42;;69:70;;135:1;132;125:12;69:70;14:131;:::o;150:315::-;218:6;226;279:2;267:9;258:7;254:23;250:32;247:52;;;295:1;292;285:12;247:52;331:9;318:23;308:33;;391:2;380:9;376:18;363:32;404:31;429:5;404:31;:::i;:::-;454:5;444:15;;;150:315;;;;;:::o;860:247::-;919:6;972:2;960:9;951:7;947:23;943:32;940:52;;;988:1;985;978:12;940:52;1027:9;1014:23;1046:31;1071:5;1046:31;:::i;:::-;1096:5;860:247;-1:-1:-1;;;860:247:27:o;1112:277::-;1179:6;1232:2;1220:9;1211:7;1207:23;1203:32;1200:52;;;1248:1;1245;1238:12;1200:52;1280:9;1274:16;1333:5;1326:13;1319:21;1312:5;1309:32;1299:60;;1355:1;1352;1345:12;1673:225;1713:3;1744:1;1740:6;1737:1;1734:13;1731:136;;;1789:10;1784:3;1780:20;1777:1;1770:31;1824:4;1821:1;1814:15;1852:4;1849:1;1842:15;1731:136;-1:-1:-1;1883:9:27;;1673:225::o",
+  "language": "Solidity",
+  "natspec": {
+    "kind": "dev",
+    "methods": {
+      "claimOwnership()": {
+        "details": "This function is only callable by the `_pendingOwner`.",
+        "notice": "Allows the `_pendingOwner` address to finalize the transfer."
+      },
+      "manager()": {
+        "notice": "Gets current `_manager`.",
+        "returns": {
+          "_0": "Current `_manager` address."
+        }
+      },
+      "owner()": {
+        "notice": "Returns the address of the current owner."
+      },
+      "pendingOwner()": {
+        "notice": "Gets current `_pendingOwner`.",
+        "returns": {
+          "_0": "Current `_pendingOwner` address."
+        }
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.",
+        "notice": "Renounce ownership of the contract."
+      },
+      "transferOwnership(address)": {
+        "notice": "Allows current owner to set the `_pendingOwner` address.",
+        "params": {
+          "_newOwner": "Address to transfer ownership to."
+        }
+      }
+    },
+    "version": 1
+  },
+  "offset": [135, 1098],
+  "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0xB4 JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x7EF45FDE GT PUSH2 0x71 JUMPI DUP1 PUSH4 0x7EF45FDE EQ PUSH2 0x132 JUMPI DUP1 PUSH4 0x8DA5CB5B EQ PUSH2 0x145 JUMPI DUP1 PUSH4 0xA8C62E76 EQ PUSH2 0x156 JUMPI DUP1 PUSH4 0xD6696D56 EQ PUSH2 0x169 JUMPI DUP1 PUSH4 0xE30C3978 EQ PUSH2 0x17C JUMPI DUP1 PUSH4 0xF2FDE38B EQ PUSH2 0x18D JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP1 PUSH4 0x44C2B6D0 EQ PUSH2 0xB9 JUMPI DUP1 PUSH4 0x481C6A75 EQ PUSH2 0xCE JUMPI DUP1 PUSH4 0x4E71E0C8 EQ PUSH2 0xF8 JUMPI DUP1 PUSH4 0x69C8D338 EQ PUSH2 0x100 JUMPI DUP1 PUSH4 0x70B9EE7B EQ PUSH2 0x113 JUMPI DUP1 PUSH4 0x715018A6 EQ PUSH2 0x12A JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0xCC PUSH2 0xC7 CALLDATASIZE PUSH1 0x4 PUSH2 0x62F JUMP JUMPDEST PUSH2 0x1A0 JUMP JUMPDEST STOP JUMPDEST PUSH1 0x2 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND JUMPDEST PUSH1 0x40 MLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP1 SWAP2 AND DUP2 MSTORE PUSH1 0x20 ADD JUMPDEST PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 RETURN JUMPDEST PUSH2 0xCC PUSH2 0x28C JUMP JUMPDEST PUSH1 0x3 SLOAD PUSH2 0xDB SWAP1 PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND DUP2 JUMP JUMPDEST PUSH2 0x11C PUSH1 0x5 SLOAD DUP2 JUMP JUMPDEST PUSH1 0x40 MLOAD SWAP1 DUP2 MSTORE PUSH1 0x20 ADD PUSH2 0xEF JUMP JUMPDEST PUSH2 0xCC PUSH2 0x312 JUMP JUMPDEST PUSH2 0xCC PUSH2 0x140 CALLDATASIZE PUSH1 0x4 PUSH2 0x62F JUMP JUMPDEST PUSH2 0x382 JUMP JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0xDB JUMP JUMPDEST PUSH1 0x4 SLOAD PUSH2 0xDB SWAP1 PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND DUP2 JUMP JUMPDEST PUSH2 0xCC PUSH2 0x177 CALLDATASIZE PUSH1 0x4 PUSH2 0x65F JUMP JUMPDEST PUSH2 0x42A JUMP JUMPDEST PUSH1 0x1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0xDB JUMP JUMPDEST PUSH2 0xCC PUSH2 0x19B CALLDATASIZE PUSH1 0x4 PUSH2 0x65F JUMP JUMPDEST PUSH2 0x4B5 JUMP JUMPDEST PUSH1 0x4 DUP1 SLOAD PUSH1 0x5 SLOAD PUSH1 0x40 MLOAD PUSH4 0x8033D581 PUSH1 0xE0 SHL DUP2 MSTORE SWAP3 DUP4 ADD MSTORE PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND SWAP1 PUSH4 0x8033D581 SWAP1 PUSH1 0x24 ADD PUSH1 0x20 PUSH1 0x40 MLOAD DUP1 DUP4 SUB DUP2 PUSH1 0x0 DUP8 GAS CALL ISZERO DUP1 ISZERO PUSH2 0x1EA JUMPI RETURNDATASIZE PUSH1 0x0 DUP1 RETURNDATACOPY RETURNDATASIZE PUSH1 0x0 REVERT JUMPDEST POP POP POP POP PUSH1 0x40 MLOAD RETURNDATASIZE PUSH1 0x1F NOT PUSH1 0x1F DUP3 ADD AND DUP3 ADD DUP1 PUSH1 0x40 MSTORE POP DUP2 ADD SWAP1 PUSH2 0x20E SWAP2 SWAP1 PUSH2 0x683 JUMP JUMPDEST POP PUSH1 0x3 SLOAD PUSH1 0x40 MLOAD PUSH4 0x44C2B6D PUSH1 0xE4 SHL DUP2 MSTORE PUSH1 0x4 DUP2 ADD DUP5 SWAP1 MSTORE PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP4 DUP2 AND PUSH1 0x24 DUP4 ADD MSTORE SWAP1 SWAP2 AND SWAP1 PUSH4 0x44C2B6D0 SWAP1 PUSH1 0x44 ADD JUMPDEST PUSH1 0x0 PUSH1 0x40 MLOAD DUP1 DUP4 SUB DUP2 PUSH1 0x0 DUP8 DUP1 EXTCODESIZE ISZERO DUP1 ISZERO PUSH2 0x25E JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP GAS CALL ISZERO DUP1 ISZERO PUSH2 0x272 JUMPI RETURNDATASIZE PUSH1 0x0 DUP1 RETURNDATACOPY RETURNDATASIZE PUSH1 0x0 REVERT JUMPDEST POP POP POP POP PUSH1 0x5 SLOAD PUSH1 0x1 PUSH2 0x285 SWAP2 SWAP1 PUSH2 0x6A5 JUMP JUMPDEST PUSH1 0x5 SSTORE POP POP JUMP JUMPDEST PUSH1 0x1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0x2EB JUMPI PUSH1 0x40 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x1F PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x4F776E61626C652F63616C6C65722D6E6F742D70656E64696E674F776E657200 PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD JUMPDEST PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 REVERT JUMPDEST PUSH1 0x1 SLOAD PUSH2 0x300 SWAP1 PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0x5C7 JUMP JUMPDEST PUSH1 0x1 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND SWAP1 SSTORE JUMP JUMPDEST CALLER PUSH2 0x325 PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND SWAP1 JUMP JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND EQ PUSH2 0x376 JUMPI PUSH1 0x40 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x18 PUSH1 0x24 DUP3 ADD MSTORE PUSH24 0x27BBB730B1363297B1B0B63632B916B737BA16B7BBB732B9 PUSH1 0x41 SHL PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD PUSH2 0x2E2 JUMP JUMPDEST PUSH2 0x380 PUSH1 0x0 PUSH2 0x5C7 JUMP JUMPDEST JUMP JUMPDEST PUSH1 0x4 DUP1 SLOAD PUSH1 0x5 SLOAD PUSH1 0x40 MLOAD PUSH4 0x8033D581 PUSH1 0xE0 SHL DUP2 MSTORE SWAP3 DUP4 ADD MSTORE PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND SWAP1 PUSH4 0x8033D581 SWAP1 PUSH1 0x24 ADD PUSH1 0x20 PUSH1 0x40 MLOAD DUP1 DUP4 SUB DUP2 PUSH1 0x0 DUP8 GAS CALL ISZERO DUP1 ISZERO PUSH2 0x3CC JUMPI RETURNDATASIZE PUSH1 0x0 DUP1 RETURNDATACOPY RETURNDATASIZE PUSH1 0x0 REVERT JUMPDEST POP POP POP POP PUSH1 0x40 MLOAD RETURNDATASIZE PUSH1 0x1F NOT PUSH1 0x1F DUP3 ADD AND DUP3 ADD DUP1 PUSH1 0x40 MSTORE POP DUP2 ADD SWAP1 PUSH2 0x3F0 SWAP2 SWAP1 PUSH2 0x683 JUMP JUMPDEST POP PUSH1 0x3 SLOAD PUSH1 0x40 MLOAD PUSH4 0x3F7A2FEF PUSH1 0xE1 SHL DUP2 MSTORE PUSH1 0x4 DUP2 ADD DUP5 SWAP1 MSTORE PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP4 DUP2 AND PUSH1 0x24 DUP4 ADD MSTORE SWAP1 SWAP2 AND SWAP1 PUSH4 0x7EF45FDE SWAP1 PUSH1 0x44 ADD PUSH2 0x244 JUMP JUMPDEST CALLER PUSH2 0x43D PUSH1 0x2 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND SWAP1 JUMP JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND EQ PUSH2 0x493 JUMPI PUSH1 0x40 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x1D PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x4D616E61676561626C652F63616C6C65722D6E6F742D6D616E61676572000000 PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD PUSH2 0x2E2 JUMP JUMPDEST PUSH1 0x3 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP3 SWAP1 SWAP3 AND SWAP2 SWAP1 SWAP2 OR SWAP1 SSTORE JUMP JUMPDEST CALLER PUSH2 0x4C8 PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND SWAP1 JUMP JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND EQ PUSH2 0x519 JUMPI PUSH1 0x40 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x18 PUSH1 0x24 DUP3 ADD MSTORE PUSH24 0x27BBB730B1363297B1B0B63632B916B737BA16B7BBB732B9 PUSH1 0x41 SHL PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD PUSH2 0x2E2 JUMP JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP2 AND PUSH2 0x57D JUMPI PUSH1 0x40 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x25 PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x4F776E61626C652F70656E64696E674F776E65722D6E6F742D7A65726F2D6164 PUSH1 0x44 DUP3 ADD MSTORE PUSH5 0x6472657373 PUSH1 0xD8 SHL PUSH1 0x64 DUP3 ADD MSTORE PUSH1 0x84 ADD PUSH2 0x2E2 JUMP JUMPDEST PUSH1 0x1 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP4 AND SWAP1 DUP2 OR SWAP1 SWAP2 SSTORE PUSH1 0x40 MLOAD PUSH32 0x239A2DDDED15777FA246AED5F7E1A9BC69A39D4EB4A397034D1D85766CCA7D4C SWAP1 PUSH1 0x0 SWAP1 LOG2 POP JUMP JUMPDEST PUSH1 0x0 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP4 DUP2 AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT DUP4 AND DUP2 OR DUP5 SSTORE PUSH1 0x40 MLOAD SWAP2 SWAP1 SWAP3 AND SWAP3 DUP4 SWAP2 PUSH32 0x8BE0079C531659141344CD1FD0A4F28419497F9722A3DAAFE3B4186F6B6457E0 SWAP2 SWAP1 LOG3 POP POP JUMP JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP2 AND DUP2 EQ PUSH2 0x62C JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP JUMP JUMPDEST PUSH1 0x0 DUP1 PUSH1 0x40 DUP4 DUP6 SUB SLT ISZERO PUSH2 0x642 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP3 CALLDATALOAD SWAP2 POP PUSH1 0x20 DUP4 ADD CALLDATALOAD PUSH2 0x654 DUP2 PUSH2 0x617 JUMP JUMPDEST DUP1 SWAP2 POP POP SWAP3 POP SWAP3 SWAP1 POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x671 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP2 CALLDATALOAD PUSH2 0x67C DUP2 PUSH2 0x617 JUMP JUMPDEST SWAP4 SWAP3 POP POP POP JUMP JUMPDEST PUSH1 0x0 PUSH1 0x20 DUP3 DUP5 SUB SLT ISZERO PUSH2 0x695 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST DUP2 MLOAD DUP1 ISZERO ISZERO DUP2 EQ PUSH2 0x67C JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x0 DUP3 NOT DUP3 GT ISZERO PUSH2 0x6C6 JUMPI PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH1 0x0 MSTORE PUSH1 0x11 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH1 0x0 REVERT JUMPDEST POP ADD SWAP1 JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xBC MLOAD 0xCB PUSH4 0x53B97619 0xB0 PUSH7 0xA3C0CE241EBF06 PUSH27 0xE8BABE7E9E6EC02D39A2FAFB2D7164736F6C634300080F00330000 ",
+  "pcMap": {
+    "0": {
+      "offset": [135, 1098],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x80"
+    },
+    "2": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "4": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "MSTORE",
+      "path": "14"
+    },
+    "5": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "CALLVALUE",
+      "path": "14"
+    },
+    "6": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "7": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "ISZERO",
+      "path": "14"
+    },
+    "8": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x10"
+    },
+    "11": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "12": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "14": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "15": {
+      "dev": "Cannot send ether to nonpayable function",
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "REVERT",
+      "path": "14"
+    },
+    "16": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "17": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "POP",
+      "path": "14"
+    },
+    "18": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x4"
+    },
+    "20": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "CALLDATASIZE",
+      "path": "14"
+    },
+    "21": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "LT",
+      "path": "14"
+    },
+    "22": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xB4"
+    },
+    "25": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "26": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "28": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "CALLDATALOAD",
+      "path": "14"
+    },
+    "29": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0xE0"
+    },
+    "31": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "SHR",
+      "path": "14"
+    },
+    "32": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "33": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x7EF45FDE"
+    },
+    "38": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "GT",
+      "path": "14"
+    },
+    "39": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x71"
+    },
+    "42": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "43": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "44": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x7EF45FDE"
+    },
+    "49": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "50": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x132"
+    },
+    "53": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "54": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "55": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x8DA5CB5B"
+    },
+    "60": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "61": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x145"
+    },
+    "64": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "65": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "66": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0xA8C62E76"
+    },
+    "71": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "72": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x156"
+    },
+    "75": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "76": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "77": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0xD6696D56"
+    },
+    "82": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "83": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x169"
+    },
+    "86": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "87": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "88": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0xE30C3978"
+    },
+    "93": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "94": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x17C"
+    },
+    "97": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "98": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "99": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0xF2FDE38B"
+    },
+    "104": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "105": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x18D"
+    },
+    "108": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "109": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "111": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "112": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "REVERT",
+      "path": "14"
+    },
+    "113": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "114": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "115": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x44C2B6D0"
+    },
+    "120": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "121": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xB9"
+    },
+    "124": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "125": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "126": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x481C6A75"
+    },
+    "131": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "132": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xCE"
+    },
+    "135": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "136": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "137": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x4E71E0C8"
+    },
+    "142": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "143": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xF8"
+    },
+    "146": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "147": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "148": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x69C8D338"
+    },
+    "153": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "154": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x100"
+    },
+    "157": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "158": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "159": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x70B9EE7B"
+    },
+    "164": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "165": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x113"
+    },
+    "168": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "169": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "170": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x715018A6"
+    },
+    "175": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "EQ",
+      "path": "14"
+    },
+    "176": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x12A"
+    },
+    "179": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "180": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "181": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "183": {
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "184": {
+      "first_revert": true,
+      "fn": null,
+      "offset": [135, 1098],
+      "op": "REVERT",
+      "path": "14"
+    },
+    "185": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "186": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xCC"
+    },
+    "189": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xC7"
+    },
+    "192": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "CALLDATASIZE",
+      "path": "14"
+    },
+    "193": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x4"
+    },
+    "195": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x62F"
+    },
+    "198": {
+      "fn": "GovDao.openPostion",
+      "jump": "i",
+      "offset": [517, 799],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "199": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "200": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x1A0"
+    },
+    "203": {
+      "fn": "GovDao.openPostion",
+      "jump": "i",
+      "offset": [517, 799],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "204": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "205": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "STOP",
+      "path": "14"
+    },
+    "206": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "207": {
+      "fn": "Manageable.manager",
+      "offset": [5821, 5829],
+      "op": "PUSH1",
+      "path": "16",
+      "statement": 0,
+      "value": "0x2"
+    },
+    "209": {
+      "fn": "Manageable.manager",
+      "offset": [5821, 5829],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "210": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "212": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "214": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "216": {
+      "op": "SHL"
+    },
+    "217": {
+      "op": "SUB"
+    },
+    "218": {
+      "fn": "Manageable.manager",
+      "offset": [5821, 5829],
+      "op": "AND",
+      "path": "16"
+    },
+    "219": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "220": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x40"
+    },
+    "222": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "223": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "225": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "227": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "229": {
+      "op": "SHL"
+    },
+    "230": {
+      "op": "SUB"
+    },
+    "231": {
+      "op": "SWAP1"
+    },
+    "232": {
+      "op": "SWAP2"
+    },
+    "233": {
+      "op": "AND"
+    },
+    "234": {
+      "op": "DUP2"
+    },
+    "235": {
+      "op": "MSTORE"
+    },
+    "236": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "238": {
+      "op": "ADD"
+    },
+    "239": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "240": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x40"
+    },
+    "242": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "243": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "DUP1",
+      "path": "16"
+    },
+    "244": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "SWAP2",
+      "path": "16"
+    },
+    "245": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "SUB",
+      "path": "16"
+    },
+    "246": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "247": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "RETURN",
+      "path": "16"
+    },
+    "248": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4128, 4260],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "249": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4128, 4260],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0xCC"
+    },
+    "252": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4128, 4260],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x28C"
+    },
+    "255": {
+      "fn": "Ownable.claimOwnership",
+      "jump": "i",
+      "offset": [4128, 4260],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "256": {
+      "offset": [172, 196],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "257": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [172, 196],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x3"
+    },
+    "259": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [172, 196],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "260": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [172, 196],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xDB"
+    },
+    "263": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [172, 196],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "264": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "266": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "268": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "270": {
+      "op": "SHL"
+    },
+    "271": {
+      "op": "SUB"
+    },
+    "272": {
+      "offset": [172, 196],
+      "op": "AND",
+      "path": "14"
+    },
+    "273": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [172, 196],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "274": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [172, 196],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "275": {
+      "offset": [233, 256],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "276": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [233, 256],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x11C"
+    },
+    "279": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [233, 256],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x5"
+    },
+    "281": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [233, 256],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "282": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [233, 256],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "283": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [233, 256],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "284": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [233, 256],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "285": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [233, 256],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "287": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [233, 256],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "288": {
+      "op": "SWAP1"
+    },
+    "289": {
+      "op": "DUP2"
+    },
+    "290": {
+      "op": "MSTORE"
+    },
+    "291": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "293": {
+      "op": "ADD"
+    },
+    "294": {
+      "offset": [233, 256],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xEF"
+    },
+    "297": {
+      "op": "JUMP"
+    },
+    "298": {
+      "fn": "Ownable.renounceOwnership",
+      "offset": [3469, 3565],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "299": {
+      "fn": "Ownable.renounceOwnership",
+      "offset": [3469, 3565],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0xCC"
+    },
+    "302": {
+      "fn": "Ownable.renounceOwnership",
+      "offset": [3469, 3565],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x312"
+    },
+    "305": {
+      "fn": "Ownable.renounceOwnership",
+      "jump": "i",
+      "offset": [3469, 3565],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "306": {
+      "fn": "GovDao.closePostion",
+      "offset": [807, 1091],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "307": {
+      "fn": "GovDao.closePostion",
+      "offset": [807, 1091],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xCC"
+    },
+    "310": {
+      "fn": "GovDao.closePostion",
+      "offset": [807, 1091],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x140"
+    },
+    "313": {
+      "fn": "GovDao.closePostion",
+      "offset": [807, 1091],
+      "op": "CALLDATASIZE",
+      "path": "14"
+    },
+    "314": {
+      "fn": "GovDao.closePostion",
+      "offset": [807, 1091],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x4"
+    },
+    "316": {
+      "fn": "GovDao.closePostion",
+      "offset": [807, 1091],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x62F"
+    },
+    "319": {
+      "fn": "GovDao.closePostion",
+      "jump": "i",
+      "offset": [807, 1091],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "320": {
+      "fn": "GovDao.closePostion",
+      "offset": [807, 1091],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "321": {
+      "fn": "GovDao.closePostion",
+      "offset": [807, 1091],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x382"
+    },
+    "324": {
+      "fn": "GovDao.closePostion",
+      "jump": "i",
+      "offset": [807, 1091],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "325": {
+      "fn": "Ownable.owner",
+      "offset": [2755, 2842],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "326": {
+      "fn": "Ownable.owner",
+      "offset": [2801, 2808],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x0"
+    },
+    "328": {
+      "fn": "Ownable.owner",
+      "offset": [2828, 2834],
+      "op": "SLOAD",
+      "path": "16",
+      "statement": 1
+    },
+    "329": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "331": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "333": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "335": {
+      "op": "SHL"
+    },
+    "336": {
+      "op": "SUB"
+    },
+    "337": {
+      "fn": "Ownable.owner",
+      "offset": [2828, 2834],
+      "op": "AND",
+      "path": "16"
+    },
+    "338": {
+      "fn": "Ownable.owner",
+      "offset": [2755, 2842],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0xDB"
+    },
+    "341": {
+      "fn": "Ownable.owner",
+      "offset": [2755, 2842],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "342": {
+      "offset": [203, 226],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "343": {
+      "fn": "Ownable.owner",
+      "offset": [203, 226],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x4"
+    },
+    "345": {
+      "fn": "Ownable.owner",
+      "offset": [203, 226],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "346": {
+      "fn": "Ownable.owner",
+      "offset": [203, 226],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xDB"
+    },
+    "349": {
+      "fn": "Ownable.owner",
+      "offset": [203, 226],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "350": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "352": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "354": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "356": {
+      "op": "SHL"
+    },
+    "357": {
+      "op": "SUB"
+    },
+    "358": {
+      "offset": [203, 226],
+      "op": "AND",
+      "path": "14"
+    },
+    "359": {
+      "fn": "Ownable.owner",
+      "offset": [203, 226],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "360": {
+      "fn": "Ownable.owner",
+      "offset": [203, 226],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "361": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [406, 509],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "362": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [406, 509],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0xCC"
+    },
+    "365": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [406, 509],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x177"
+    },
+    "368": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [406, 509],
+      "op": "CALLDATASIZE",
+      "path": "14"
+    },
+    "369": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [406, 509],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x4"
+    },
+    "371": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [406, 509],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x65F"
+    },
+    "374": {
+      "fn": "GovDao.setArbitrage",
+      "jump": "i",
+      "offset": [406, 509],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "375": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [406, 509],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "376": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [406, 509],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x42A"
+    },
+    "379": {
+      "fn": "GovDao.setArbitrage",
+      "jump": "i",
+      "offset": [406, 509],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "380": {
+      "fn": "Ownable.pendingOwner",
+      "offset": [2963, 3066],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "381": {
+      "fn": "Ownable.pendingOwner",
+      "offset": [3045, 3058],
+      "op": "PUSH1",
+      "path": "16",
+      "statement": 2,
+      "value": "0x1"
+    },
+    "383": {
+      "fn": "Ownable.pendingOwner",
+      "offset": [3045, 3058],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "384": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "386": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "388": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "390": {
+      "op": "SHL"
+    },
+    "391": {
+      "op": "SUB"
+    },
+    "392": {
+      "fn": "Ownable.pendingOwner",
+      "offset": [3045, 3058],
+      "op": "AND",
+      "path": "16"
+    },
+    "393": {
+      "fn": "Ownable.pendingOwner",
+      "offset": [2963, 3066],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0xDB"
+    },
+    "396": {
+      "fn": "Ownable.pendingOwner",
+      "offset": [2963, 3066],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "397": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "398": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0xCC"
+    },
+    "401": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x19B"
+    },
+    "404": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "CALLDATASIZE",
+      "path": "16"
+    },
+    "405": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x4"
+    },
+    "407": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x65F"
+    },
+    "410": {
+      "fn": "Ownable.transferOwnership",
+      "jump": "i",
+      "offset": [3720, 3960],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "411": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "412": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x4B5"
+    },
+    "415": {
+      "fn": "Ownable.transferOwnership",
+      "jump": "i",
+      "offset": [3720, 3960],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "416": {
+      "fn": "GovDao.openPostion",
+      "offset": [517, 799],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "417": {
+      "fn": "GovDao.openPostion",
+      "offset": [652, 660],
+      "op": "PUSH1",
+      "path": "14",
+      "statement": 3,
+      "value": "0x4"
+    },
+    "419": {
+      "fn": "GovDao.openPostion",
+      "offset": [652, 660],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "420": {
+      "fn": "GovDao.openPostion",
+      "offset": [652, 660],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "421": {
+      "fn": "GovDao.openPostion",
+      "offset": [669, 677],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x5"
+    },
+    "423": {
+      "fn": "GovDao.openPostion",
+      "offset": [669, 677],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "424": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "426": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "427": {
+      "op": "PUSH4",
+      "value": "0x8033D581"
+    },
+    "432": {
+      "op": "PUSH1",
+      "value": "0xE0"
+    },
+    "434": {
+      "op": "SHL"
+    },
+    "435": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "436": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "MSTORE",
+      "path": "14"
+    },
+    "437": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "SWAP3",
+      "path": "14"
+    },
+    "438": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP4",
+      "path": "14"
+    },
+    "439": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "ADD",
+      "path": "14"
+    },
+    "440": {
+      "op": "MSTORE"
+    },
+    "441": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "443": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "445": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "447": {
+      "op": "SHL"
+    },
+    "448": {
+      "op": "SUB"
+    },
+    "449": {
+      "fn": "GovDao.openPostion",
+      "offset": [652, 660],
+      "op": "AND",
+      "path": "14"
+    },
+    "450": {
+      "fn": "GovDao.openPostion",
+      "offset": [652, 660],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "451": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 668],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x8033D581"
+    },
+    "456": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 668],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "457": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "459": {
+      "op": "ADD"
+    },
+    "460": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x20"
+    },
+    "462": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "464": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "465": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "466": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP4",
+      "path": "14"
+    },
+    "467": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "SUB",
+      "path": "14"
+    },
+    "468": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "469": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "471": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP8",
+      "path": "14"
+    },
+    "472": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "GAS",
+      "path": "14"
+    },
+    "473": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "CALL",
+      "path": "14"
+    },
+    "474": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "ISZERO",
+      "path": "14"
+    },
+    "475": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "476": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "ISZERO",
+      "path": "14"
+    },
+    "477": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x1EA"
+    },
+    "480": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "481": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "RETURNDATASIZE",
+      "path": "14"
+    },
+    "482": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "484": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "485": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "RETURNDATACOPY",
+      "path": "14"
+    },
+    "486": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "RETURNDATASIZE",
+      "path": "14"
+    },
+    "487": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "489": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "REVERT",
+      "path": "14"
+    },
+    "490": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "491": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "POP",
+      "path": "14"
+    },
+    "492": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "POP",
+      "path": "14"
+    },
+    "493": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "POP",
+      "path": "14"
+    },
+    "494": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "POP",
+      "path": "14"
+    },
+    "495": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "497": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "498": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "RETURNDATASIZE",
+      "path": "14"
+    },
+    "499": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x1F"
+    },
+    "501": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "NOT",
+      "path": "14"
+    },
+    "502": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x1F"
+    },
+    "504": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP3",
+      "path": "14"
+    },
+    "505": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "ADD",
+      "path": "14"
+    },
+    "506": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "AND",
+      "path": "14"
+    },
+    "507": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP3",
+      "path": "14"
+    },
+    "508": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "ADD",
+      "path": "14"
+    },
+    "509": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "510": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "512": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "MSTORE",
+      "path": "14"
+    },
+    "513": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "POP",
+      "path": "14"
+    },
+    "514": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "515": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "ADD",
+      "path": "14"
+    },
+    "516": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "517": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x20E"
+    },
+    "520": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "SWAP2",
+      "path": "14"
+    },
+    "521": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "522": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x683"
+    },
+    "525": {
+      "fn": "GovDao.openPostion",
+      "jump": "i",
+      "offset": [642, 678],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "526": {
+      "fn": "GovDao.openPostion",
+      "offset": [642, 678],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "527": {
+      "op": "POP"
+    },
+    "528": {
+      "fn": "GovDao.openPostion",
+      "offset": [700, 709],
+      "op": "PUSH1",
+      "path": "14",
+      "statement": 4,
+      "value": "0x3"
+    },
+    "530": {
+      "fn": "GovDao.openPostion",
+      "offset": [700, 709],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "531": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "533": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "534": {
+      "op": "PUSH4",
+      "value": "0x44C2B6D"
+    },
+    "539": {
+      "op": "PUSH1",
+      "value": "0xE4"
+    },
+    "541": {
+      "op": "SHL"
+    },
+    "542": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "543": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "MSTORE",
+      "path": "14"
+    },
+    "544": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x4"
+    },
+    "546": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "547": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "ADD",
+      "path": "14"
+    },
+    "548": {
+      "op": "DUP5"
+    },
+    "549": {
+      "op": "SWAP1"
+    },
+    "550": {
+      "op": "MSTORE"
+    },
+    "551": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "553": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "555": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "557": {
+      "op": "SHL"
+    },
+    "558": {
+      "op": "SUB"
+    },
+    "559": {
+      "op": "DUP4"
+    },
+    "560": {
+      "op": "DUP2"
+    },
+    "561": {
+      "op": "AND"
+    },
+    "562": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "564": {
+      "op": "DUP4"
+    },
+    "565": {
+      "op": "ADD"
+    },
+    "566": {
+      "op": "MSTORE"
+    },
+    "567": {
+      "fn": "GovDao.openPostion",
+      "offset": [700, 709],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "568": {
+      "fn": "GovDao.openPostion",
+      "offset": [700, 709],
+      "op": "SWAP2",
+      "path": "14"
+    },
+    "569": {
+      "fn": "GovDao.openPostion",
+      "offset": [700, 709],
+      "op": "AND",
+      "path": "14"
+    },
+    "570": {
+      "fn": "GovDao.openPostion",
+      "offset": [700, 709],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "571": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 722],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x44C2B6D0"
+    },
+    "576": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 722],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "577": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "579": {
+      "op": "ADD"
+    },
+    "580": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "581": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "583": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "585": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "586": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "587": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP4",
+      "path": "14"
+    },
+    "588": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "SUB",
+      "path": "14"
+    },
+    "589": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "590": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "592": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP8",
+      "path": "14"
+    },
+    "593": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "594": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "EXTCODESIZE",
+      "path": "14"
+    },
+    "595": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "ISZERO",
+      "path": "14"
+    },
+    "596": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "597": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "ISZERO",
+      "path": "14"
+    },
+    "598": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x25E"
+    },
+    "601": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "602": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "604": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "605": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "REVERT",
+      "path": "14"
+    },
+    "606": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "607": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "POP",
+      "path": "14"
+    },
+    "608": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "GAS",
+      "path": "14"
+    },
+    "609": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "CALL",
+      "path": "14"
+    },
+    "610": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "ISZERO",
+      "path": "14"
+    },
+    "611": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "612": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "ISZERO",
+      "path": "14"
+    },
+    "613": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x272"
+    },
+    "616": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "617": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "RETURNDATASIZE",
+      "path": "14"
+    },
+    "618": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "620": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "621": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "RETURNDATACOPY",
+      "path": "14"
+    },
+    "622": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "RETURNDATASIZE",
+      "path": "14"
+    },
+    "623": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "625": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "REVERT",
+      "path": "14"
+    },
+    "626": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "627": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "POP",
+      "path": "14"
+    },
+    "628": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "POP",
+      "path": "14"
+    },
+    "629": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "POP",
+      "path": "14"
+    },
+    "630": {
+      "fn": "GovDao.openPostion",
+      "offset": [689, 759],
+      "op": "POP",
+      "path": "14"
+    },
+    "631": {
+      "fn": "GovDao.openPostion",
+      "offset": [781, 789],
+      "op": "PUSH1",
+      "path": "14",
+      "statement": 5,
+      "value": "0x5"
+    },
+    "633": {
+      "fn": "GovDao.openPostion",
+      "offset": [781, 789],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "634": {
+      "fn": "GovDao.openPostion",
+      "offset": [790, 791],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x1"
+    },
+    "636": {
+      "fn": "GovDao.openPostion",
+      "offset": [781, 791],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x285"
+    },
+    "639": {
+      "fn": "GovDao.openPostion",
+      "offset": [781, 791],
+      "op": "SWAP2",
+      "path": "14"
+    },
+    "640": {
+      "fn": "GovDao.openPostion",
+      "offset": [781, 791],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "641": {
+      "fn": "GovDao.openPostion",
+      "offset": [781, 791],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x6A5"
+    },
+    "644": {
+      "fn": "GovDao.openPostion",
+      "jump": "i",
+      "offset": [781, 791],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "645": {
+      "fn": "GovDao.openPostion",
+      "offset": [781, 791],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "646": {
+      "fn": "GovDao.openPostion",
+      "offset": [770, 778],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x5"
+    },
+    "648": {
+      "fn": "GovDao.openPostion",
+      "offset": [770, 791],
+      "op": "SSTORE",
+      "path": "14"
+    },
+    "649": {
+      "op": "POP"
+    },
+    "650": {
+      "op": "POP"
+    },
+    "651": {
+      "fn": "GovDao.openPostion",
+      "jump": "o",
+      "offset": [517, 799],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "652": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4128, 4260],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "653": {
+      "offset": [5062, 5075],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x1"
+    },
+    "655": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5062, 5075],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "656": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "658": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "660": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "662": {
+      "op": "SHL"
+    },
+    "663": {
+      "op": "SUB"
+    },
+    "664": {
+      "offset": [5062, 5075],
+      "op": "AND",
+      "path": "16"
+    },
+    "665": {
+      "offset": [5048, 5058],
+      "op": "CALLER",
+      "path": "16"
+    },
+    "666": {
+      "offset": [5048, 5075],
+      "op": "EQ",
+      "path": "16"
+    },
+    "667": {
+      "offset": [5040, 5111],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x2EB"
+    },
+    "670": {
+      "offset": [5040, 5111],
+      "op": "JUMPI",
+      "path": "16"
+    },
+    "671": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x40"
+    },
+    "673": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "674": {
+      "op": "PUSH3",
+      "value": "0x461BCD"
+    },
+    "678": {
+      "op": "PUSH1",
+      "value": "0xE5"
+    },
+    "680": {
+      "op": "SHL"
+    },
+    "681": {
+      "offset": [5040, 5111],
+      "op": "DUP2",
+      "path": "16"
+    },
+    "682": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "MSTORE",
+      "path": "16"
+    },
+    "683": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "685": {
+      "offset": [5040, 5111],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x4"
+    },
+    "687": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "DUP3",
+      "path": "16"
+    },
+    "688": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "ADD",
+      "path": "16"
+    },
+    "689": {
+      "op": "MSTORE"
+    },
+    "690": {
+      "op": "PUSH1",
+      "value": "0x1F"
+    },
+    "692": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "694": {
+      "op": "DUP3"
+    },
+    "695": {
+      "op": "ADD"
+    },
+    "696": {
+      "op": "MSTORE"
+    },
+    "697": {
+      "op": "PUSH32",
+      "value": "0x4F776E61626C652F63616C6C65722D6E6F742D70656E64696E674F776E657200"
+    },
+    "730": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "732": {
+      "op": "DUP3"
+    },
+    "733": {
+      "op": "ADD"
+    },
+    "734": {
+      "op": "MSTORE"
+    },
+    "735": {
+      "op": "PUSH1",
+      "value": "0x64"
+    },
+    "737": {
+      "op": "ADD"
+    },
+    "738": {
+      "offset": [5040, 5111],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "739": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x40"
+    },
+    "741": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "742": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "DUP1",
+      "path": "16"
+    },
+    "743": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "SWAP2",
+      "path": "16"
+    },
+    "744": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "SUB",
+      "path": "16"
+    },
+    "745": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "746": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "REVERT",
+      "optimizer_revert": true,
+      "path": "16"
+    },
+    "747": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [5040, 5111],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "748": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4201, 4214],
+      "op": "PUSH1",
+      "path": "16",
+      "statement": 6,
+      "value": "0x1"
+    },
+    "750": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4201, 4214],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "751": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4191, 4215],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x300"
+    },
+    "754": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4191, 4215],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "755": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "757": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "759": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "761": {
+      "op": "SHL"
+    },
+    "762": {
+      "op": "SUB"
+    },
+    "763": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4201, 4214],
+      "op": "AND",
+      "path": "16"
+    },
+    "764": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4191, 4200],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x5C7"
+    },
+    "767": {
+      "fn": "Ownable.claimOwnership",
+      "jump": "i",
+      "offset": [4191, 4215],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "768": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4191, 4215],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "769": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4226, 4239],
+      "op": "PUSH1",
+      "path": "16",
+      "statement": 7,
+      "value": "0x1"
+    },
+    "771": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4226, 4252],
+      "op": "DUP1",
+      "path": "16"
+    },
+    "772": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4226, 4252],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "773": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "775": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "777": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "779": {
+      "op": "SHL"
+    },
+    "780": {
+      "op": "SUB"
+    },
+    "781": {
+      "op": "NOT"
+    },
+    "782": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4226, 4252],
+      "op": "AND",
+      "path": "16"
+    },
+    "783": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4226, 4252],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "784": {
+      "fn": "Ownable.claimOwnership",
+      "offset": [4226, 4252],
+      "op": "SSTORE",
+      "path": "16"
+    },
+    "785": {
+      "fn": "Ownable.claimOwnership",
+      "jump": "o",
+      "offset": [4128, 4260],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "786": {
+      "fn": "Ownable.renounceOwnership",
+      "offset": [3469, 3565],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "787": {
+      "offset": [4842, 4852],
+      "op": "CALLER",
+      "path": "16"
+    },
+    "788": {
+      "offset": [4831, 4838],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x325"
+    },
+    "791": {
+      "fn": "Ownable.owner",
+      "offset": [2801, 2808],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x0"
+    },
+    "793": {
+      "fn": "Ownable.owner",
+      "offset": [2828, 2834],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "794": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "796": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "798": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "800": {
+      "op": "SHL"
+    },
+    "801": {
+      "op": "SUB"
+    },
+    "802": {
+      "fn": "Ownable.owner",
+      "offset": [2828, 2834],
+      "op": "AND",
+      "path": "16"
+    },
+    "803": {
+      "fn": "Ownable.owner",
+      "offset": [2828, 2834],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "804": {
+      "fn": "Ownable.owner",
+      "offset": [2755, 2842],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "805": {
+      "offset": [4831, 4838],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "806": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "808": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "810": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "812": {
+      "op": "SHL"
+    },
+    "813": {
+      "op": "SUB"
+    },
+    "814": {
+      "offset": [4831, 4852],
+      "op": "AND",
+      "path": "16"
+    },
+    "815": {
+      "fn": "Ownable.owner",
+      "offset": [4831, 4852],
+      "op": "EQ",
+      "path": "16"
+    },
+    "816": {
+      "offset": [4823, 4881],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x376"
+    },
+    "819": {
+      "offset": [4823, 4881],
+      "op": "JUMPI",
+      "path": "16"
+    },
+    "820": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x40"
+    },
+    "822": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "823": {
+      "op": "PUSH3",
+      "value": "0x461BCD"
+    },
+    "827": {
+      "op": "PUSH1",
+      "value": "0xE5"
+    },
+    "829": {
+      "op": "SHL"
+    },
+    "830": {
+      "offset": [4823, 4881],
+      "op": "DUP2",
+      "path": "16"
+    },
+    "831": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "MSTORE",
+      "path": "16"
+    },
+    "832": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "834": {
+      "offset": [4823, 4881],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x4"
+    },
+    "836": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "DUP3",
+      "path": "16"
+    },
+    "837": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "ADD",
+      "path": "16"
+    },
+    "838": {
+      "op": "MSTORE"
+    },
+    "839": {
+      "op": "PUSH1",
+      "value": "0x18"
+    },
+    "841": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "843": {
+      "op": "DUP3"
+    },
+    "844": {
+      "op": "ADD"
+    },
+    "845": {
+      "op": "MSTORE"
+    },
+    "846": {
+      "op": "PUSH24",
+      "value": "0x27BBB730B1363297B1B0B63632B916B737BA16B7BBB732B9"
+    },
+    "871": {
+      "op": "PUSH1",
+      "value": "0x41"
+    },
+    "873": {
+      "op": "SHL"
+    },
+    "874": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "876": {
+      "op": "DUP3"
+    },
+    "877": {
+      "op": "ADD"
+    },
+    "878": {
+      "op": "MSTORE"
+    },
+    "879": {
+      "op": "PUSH1",
+      "value": "0x64"
+    },
+    "881": {
+      "op": "ADD"
+    },
+    "882": {
+      "offset": [4823, 4881],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x2E2"
+    },
+    "885": {
+      "op": "JUMP"
+    },
+    "886": {
+      "offset": [4823, 4881],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "887": {
+      "fn": "Ownable.renounceOwnership",
+      "offset": [3536, 3557],
+      "op": "PUSH2",
+      "path": "16",
+      "statement": 8,
+      "value": "0x380"
+    },
+    "890": {
+      "fn": "Ownable.renounceOwnership",
+      "offset": [3554, 3555],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x0"
+    },
+    "892": {
+      "fn": "Ownable.renounceOwnership",
+      "offset": [3536, 3545],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x5C7"
+    },
+    "895": {
+      "fn": "Ownable.renounceOwnership",
+      "jump": "i",
+      "offset": [3536, 3557],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "896": {
+      "fn": "Ownable.renounceOwnership",
+      "offset": [3536, 3557],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "897": {
+      "fn": "Ownable.renounceOwnership",
+      "jump": "o",
+      "offset": [3469, 3565],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "898": {
+      "fn": "GovDao.closePostion",
+      "offset": [807, 1091],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "899": {
+      "fn": "GovDao.closePostion",
+      "offset": [943, 951],
+      "op": "PUSH1",
+      "path": "14",
+      "statement": 9,
+      "value": "0x4"
+    },
+    "901": {
+      "fn": "GovDao.closePostion",
+      "offset": [943, 951],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "902": {
+      "fn": "GovDao.closePostion",
+      "offset": [943, 951],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "903": {
+      "fn": "GovDao.closePostion",
+      "offset": [960, 968],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x5"
+    },
+    "905": {
+      "fn": "GovDao.closePostion",
+      "offset": [960, 968],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "906": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "908": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "909": {
+      "op": "PUSH4",
+      "value": "0x8033D581"
+    },
+    "914": {
+      "op": "PUSH1",
+      "value": "0xE0"
+    },
+    "916": {
+      "op": "SHL"
+    },
+    "917": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "918": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "MSTORE",
+      "path": "14"
+    },
+    "919": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "SWAP3",
+      "path": "14"
+    },
+    "920": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP4",
+      "path": "14"
+    },
+    "921": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "ADD",
+      "path": "14"
+    },
+    "922": {
+      "op": "MSTORE"
+    },
+    "923": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "925": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "927": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "929": {
+      "op": "SHL"
+    },
+    "930": {
+      "op": "SUB"
+    },
+    "931": {
+      "fn": "GovDao.closePostion",
+      "offset": [943, 951],
+      "op": "AND",
+      "path": "14"
+    },
+    "932": {
+      "fn": "GovDao.closePostion",
+      "offset": [943, 951],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "933": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 959],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x8033D581"
+    },
+    "938": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 959],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "939": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "941": {
+      "op": "ADD"
+    },
+    "942": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x20"
+    },
+    "944": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "946": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "947": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "948": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP4",
+      "path": "14"
+    },
+    "949": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "SUB",
+      "path": "14"
+    },
+    "950": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "951": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "953": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP8",
+      "path": "14"
+    },
+    "954": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "GAS",
+      "path": "14"
+    },
+    "955": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "CALL",
+      "path": "14"
+    },
+    "956": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "ISZERO",
+      "path": "14"
+    },
+    "957": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "958": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "ISZERO",
+      "path": "14"
+    },
+    "959": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x3CC"
+    },
+    "962": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "JUMPI",
+      "path": "14"
+    },
+    "963": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "RETURNDATASIZE",
+      "path": "14"
+    },
+    "964": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "966": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "967": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "RETURNDATACOPY",
+      "path": "14"
+    },
+    "968": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "RETURNDATASIZE",
+      "path": "14"
+    },
+    "969": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x0"
+    },
+    "971": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "REVERT",
+      "path": "14"
+    },
+    "972": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "973": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "POP",
+      "path": "14"
+    },
+    "974": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "POP",
+      "path": "14"
+    },
+    "975": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "POP",
+      "path": "14"
+    },
+    "976": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "POP",
+      "path": "14"
+    },
+    "977": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "979": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "980": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "RETURNDATASIZE",
+      "path": "14"
+    },
+    "981": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x1F"
+    },
+    "983": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "NOT",
+      "path": "14"
+    },
+    "984": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x1F"
+    },
+    "986": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP3",
+      "path": "14"
+    },
+    "987": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "ADD",
+      "path": "14"
+    },
+    "988": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "AND",
+      "path": "14"
+    },
+    "989": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP3",
+      "path": "14"
+    },
+    "990": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "ADD",
+      "path": "14"
+    },
+    "991": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "992": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "994": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "MSTORE",
+      "path": "14"
+    },
+    "995": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "POP",
+      "path": "14"
+    },
+    "996": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "997": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "ADD",
+      "path": "14"
+    },
+    "998": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "999": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x3F0"
+    },
+    "1002": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "SWAP2",
+      "path": "14"
+    },
+    "1003": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "1004": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x683"
+    },
+    "1007": {
+      "fn": "GovDao.closePostion",
+      "jump": "i",
+      "offset": [933, 969],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "1008": {
+      "fn": "GovDao.closePostion",
+      "offset": [933, 969],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "1009": {
+      "op": "POP"
+    },
+    "1010": {
+      "fn": "GovDao.closePostion",
+      "offset": [991, 1000],
+      "op": "PUSH1",
+      "path": "14",
+      "statement": 10,
+      "value": "0x3"
+    },
+    "1012": {
+      "fn": "GovDao.closePostion",
+      "offset": [991, 1000],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "1013": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1051],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x40"
+    },
+    "1015": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1051],
+      "op": "MLOAD",
+      "path": "14"
+    },
+    "1016": {
+      "op": "PUSH4",
+      "value": "0x3F7A2FEF"
+    },
+    "1021": {
+      "op": "PUSH1",
+      "value": "0xE1"
+    },
+    "1023": {
+      "op": "SHL"
+    },
+    "1024": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1051],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "1025": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1051],
+      "op": "MSTORE",
+      "path": "14"
+    },
+    "1026": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1051],
+      "op": "PUSH1",
+      "path": "14",
+      "value": "0x4"
+    },
+    "1028": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1051],
+      "op": "DUP2",
+      "path": "14"
+    },
+    "1029": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1051],
+      "op": "ADD",
+      "path": "14"
+    },
+    "1030": {
+      "op": "DUP5"
+    },
+    "1031": {
+      "op": "SWAP1"
+    },
+    "1032": {
+      "op": "MSTORE"
+    },
+    "1033": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1035": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1037": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1039": {
+      "op": "SHL"
+    },
+    "1040": {
+      "op": "SUB"
+    },
+    "1041": {
+      "op": "DUP4"
+    },
+    "1042": {
+      "op": "DUP2"
+    },
+    "1043": {
+      "op": "AND"
+    },
+    "1044": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "1046": {
+      "op": "DUP4"
+    },
+    "1047": {
+      "op": "ADD"
+    },
+    "1048": {
+      "op": "MSTORE"
+    },
+    "1049": {
+      "fn": "GovDao.closePostion",
+      "offset": [991, 1000],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "1050": {
+      "fn": "GovDao.closePostion",
+      "offset": [991, 1000],
+      "op": "SWAP2",
+      "path": "14"
+    },
+    "1051": {
+      "fn": "GovDao.closePostion",
+      "offset": [991, 1000],
+      "op": "AND",
+      "path": "14"
+    },
+    "1052": {
+      "fn": "GovDao.closePostion",
+      "offset": [991, 1000],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "1053": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1014],
+      "op": "PUSH4",
+      "path": "14",
+      "value": "0x7EF45FDE"
+    },
+    "1058": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1014],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "1059": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "1061": {
+      "op": "ADD"
+    },
+    "1062": {
+      "fn": "GovDao.closePostion",
+      "offset": [980, 1051],
+      "op": "PUSH2",
+      "path": "14",
+      "value": "0x244"
+    },
+    "1065": {
+      "op": "JUMP"
+    },
+    "1066": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [406, 509],
+      "op": "JUMPDEST",
+      "path": "14"
+    },
+    "1067": {
+      "offset": [7016, 7026],
+      "op": "CALLER",
+      "path": "16"
+    },
+    "1068": {
+      "offset": [7003, 7012],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x43D"
+    },
+    "1071": {
+      "fn": "Manageable.manager",
+      "offset": [5821, 5829],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x2"
+    },
+    "1073": {
+      "fn": "Manageable.manager",
+      "offset": [5821, 5829],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "1074": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1076": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1078": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1080": {
+      "op": "SHL"
+    },
+    "1081": {
+      "op": "SUB"
+    },
+    "1082": {
+      "fn": "Manageable.manager",
+      "offset": [5821, 5829],
+      "op": "AND",
+      "path": "16"
+    },
+    "1083": {
+      "fn": "Manageable.manager",
+      "offset": [5821, 5829],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "1084": {
+      "fn": "Manageable.manager",
+      "offset": [5746, 5837],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "1085": {
+      "offset": [7003, 7012],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "1086": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1088": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1090": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1092": {
+      "op": "SHL"
+    },
+    "1093": {
+      "op": "SUB"
+    },
+    "1094": {
+      "offset": [7003, 7026],
+      "op": "AND",
+      "path": "16"
+    },
+    "1095": {
+      "branch": 17,
+      "fn": "Manageable.manager",
+      "offset": [7003, 7026],
+      "op": "EQ",
+      "path": "16"
+    },
+    "1096": {
+      "offset": [6995, 7060],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x493"
+    },
+    "1099": {
+      "branch": 17,
+      "offset": [6995, 7060],
+      "op": "JUMPI",
+      "path": "16"
+    },
+    "1100": {
+      "fn": "Manageable.manager",
+      "offset": [6995, 7060],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x40"
+    },
+    "1102": {
+      "fn": "Manageable.manager",
+      "offset": [6995, 7060],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "1103": {
+      "op": "PUSH3",
+      "value": "0x461BCD"
+    },
+    "1107": {
+      "op": "PUSH1",
+      "value": "0xE5"
+    },
+    "1109": {
+      "op": "SHL"
+    },
+    "1110": {
+      "offset": [6995, 7060],
+      "op": "DUP2",
+      "path": "16"
+    },
+    "1111": {
+      "fn": "Manageable.manager",
+      "offset": [6995, 7060],
+      "op": "MSTORE",
+      "path": "16"
+    },
+    "1112": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1114": {
+      "offset": [6995, 7060],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x4"
+    },
+    "1116": {
+      "fn": "Manageable.manager",
+      "offset": [6995, 7060],
+      "op": "DUP3",
+      "path": "16"
+    },
+    "1117": {
+      "fn": "Manageable.manager",
+      "offset": [6995, 7060],
+      "op": "ADD",
+      "path": "16"
+    },
+    "1118": {
+      "op": "MSTORE"
+    },
+    "1119": {
+      "op": "PUSH1",
+      "value": "0x1D"
+    },
+    "1121": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "1123": {
+      "op": "DUP3"
+    },
+    "1124": {
+      "op": "ADD"
+    },
+    "1125": {
+      "op": "MSTORE"
+    },
+    "1126": {
+      "op": "PUSH32",
+      "value": "0x4D616E61676561626C652F63616C6C65722D6E6F742D6D616E61676572000000"
+    },
+    "1159": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "1161": {
+      "op": "DUP3"
+    },
+    "1162": {
+      "op": "ADD"
+    },
+    "1163": {
+      "op": "MSTORE"
+    },
+    "1164": {
+      "op": "PUSH1",
+      "value": "0x64"
+    },
+    "1166": {
+      "op": "ADD"
+    },
+    "1167": {
+      "offset": [6995, 7060],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x2E2"
+    },
+    "1170": {
+      "op": "JUMP"
+    },
+    "1171": {
+      "offset": [6995, 7060],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "1172": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 488],
+      "op": "PUSH1",
+      "path": "14",
+      "statement": 11,
+      "value": "0x3"
+    },
+    "1174": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "DUP1",
+      "path": "14"
+    },
+    "1175": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "SLOAD",
+      "path": "14"
+    },
+    "1176": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1178": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1180": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1182": {
+      "op": "SHL"
+    },
+    "1183": {
+      "op": "SUB"
+    },
+    "1184": {
+      "op": "NOT"
+    },
+    "1185": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "AND",
+      "path": "14"
+    },
+    "1186": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1188": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1190": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1192": {
+      "op": "SHL"
+    },
+    "1193": {
+      "op": "SUB"
+    },
+    "1194": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "SWAP3",
+      "path": "14"
+    },
+    "1195": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "1196": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "SWAP3",
+      "path": "14"
+    },
+    "1197": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "AND",
+      "path": "14"
+    },
+    "1198": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "SWAP2",
+      "path": "14"
+    },
+    "1199": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "1200": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "SWAP2",
+      "path": "14"
+    },
+    "1201": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "OR",
+      "path": "14"
+    },
+    "1202": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "SWAP1",
+      "path": "14"
+    },
+    "1203": {
+      "fn": "GovDao.setArbitrage",
+      "offset": [479, 501],
+      "op": "SSTORE",
+      "path": "14"
+    },
+    "1204": {
+      "fn": "GovDao.setArbitrage",
+      "jump": "o",
+      "offset": [406, 509],
+      "op": "JUMP",
+      "path": "14"
+    },
+    "1205": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "1206": {
+      "offset": [4842, 4852],
+      "op": "CALLER",
+      "path": "16"
+    },
+    "1207": {
+      "offset": [4831, 4838],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x4C8"
+    },
+    "1210": {
+      "fn": "Ownable.owner",
+      "offset": [2801, 2808],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x0"
+    },
+    "1212": {
+      "fn": "Ownable.owner",
+      "offset": [2828, 2834],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "1213": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1215": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1217": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1219": {
+      "op": "SHL"
+    },
+    "1220": {
+      "op": "SUB"
+    },
+    "1221": {
+      "fn": "Ownable.owner",
+      "offset": [2828, 2834],
+      "op": "AND",
+      "path": "16"
+    },
+    "1222": {
+      "fn": "Ownable.owner",
+      "offset": [2828, 2834],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "1223": {
+      "fn": "Ownable.owner",
+      "offset": [2755, 2842],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "1224": {
+      "offset": [4831, 4838],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "1225": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1227": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1229": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1231": {
+      "op": "SHL"
+    },
+    "1232": {
+      "op": "SUB"
+    },
+    "1233": {
+      "offset": [4831, 4852],
+      "op": "AND",
+      "path": "16"
+    },
+    "1234": {
+      "branch": 18,
+      "fn": "Ownable.owner",
+      "offset": [4831, 4852],
+      "op": "EQ",
+      "path": "16"
+    },
+    "1235": {
+      "offset": [4823, 4881],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x519"
+    },
+    "1238": {
+      "branch": 18,
+      "offset": [4823, 4881],
+      "op": "JUMPI",
+      "path": "16"
+    },
+    "1239": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x40"
+    },
+    "1241": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "1242": {
+      "op": "PUSH3",
+      "value": "0x461BCD"
+    },
+    "1246": {
+      "op": "PUSH1",
+      "value": "0xE5"
+    },
+    "1248": {
+      "op": "SHL"
+    },
+    "1249": {
+      "offset": [4823, 4881],
+      "op": "DUP2",
+      "path": "16"
+    },
+    "1250": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "MSTORE",
+      "path": "16"
+    },
+    "1251": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1253": {
+      "offset": [4823, 4881],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x4"
+    },
+    "1255": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "DUP3",
+      "path": "16"
+    },
+    "1256": {
+      "fn": "Ownable.owner",
+      "offset": [4823, 4881],
+      "op": "ADD",
+      "path": "16"
+    },
+    "1257": {
+      "op": "MSTORE"
+    },
+    "1258": {
+      "op": "PUSH1",
+      "value": "0x18"
+    },
+    "1260": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "1262": {
+      "op": "DUP3"
+    },
+    "1263": {
+      "op": "ADD"
+    },
+    "1264": {
+      "op": "MSTORE"
+    },
+    "1265": {
+      "op": "PUSH24",
+      "value": "0x27BBB730B1363297B1B0B63632B916B737BA16B7BBB732B9"
+    },
+    "1290": {
+      "op": "PUSH1",
+      "value": "0x41"
+    },
+    "1292": {
+      "op": "SHL"
+    },
+    "1293": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "1295": {
+      "op": "DUP3"
+    },
+    "1296": {
+      "op": "ADD"
+    },
+    "1297": {
+      "op": "MSTORE"
+    },
+    "1298": {
+      "op": "PUSH1",
+      "value": "0x64"
+    },
+    "1300": {
+      "op": "ADD"
+    },
+    "1301": {
+      "offset": [4823, 4881],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x2E2"
+    },
+    "1304": {
+      "op": "JUMP"
+    },
+    "1305": {
+      "offset": [4823, 4881],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "1306": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1308": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1310": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1312": {
+      "op": "SHL"
+    },
+    "1313": {
+      "op": "SUB"
+    },
+    "1314": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3804, 3827],
+      "op": "DUP2",
+      "path": "16",
+      "statement": 12
+    },
+    "1315": {
+      "branch": 19,
+      "fn": "Ownable.transferOwnership",
+      "offset": [3804, 3827],
+      "op": "AND",
+      "path": "16"
+    },
+    "1316": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x57D"
+    },
+    "1319": {
+      "branch": 19,
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "JUMPI",
+      "path": "16"
+    },
+    "1320": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x40"
+    },
+    "1322": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "1323": {
+      "op": "PUSH3",
+      "value": "0x461BCD"
+    },
+    "1327": {
+      "op": "PUSH1",
+      "value": "0xE5"
+    },
+    "1329": {
+      "op": "SHL"
+    },
+    "1330": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "DUP2",
+      "path": "16"
+    },
+    "1331": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "MSTORE",
+      "path": "16"
+    },
+    "1332": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1334": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x4"
+    },
+    "1336": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "DUP3",
+      "path": "16"
+    },
+    "1337": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "ADD",
+      "path": "16"
+    },
+    "1338": {
+      "op": "MSTORE"
+    },
+    "1339": {
+      "op": "PUSH1",
+      "value": "0x25"
+    },
+    "1341": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "1343": {
+      "op": "DUP3"
+    },
+    "1344": {
+      "op": "ADD"
+    },
+    "1345": {
+      "op": "MSTORE"
+    },
+    "1346": {
+      "op": "PUSH32",
+      "value": "0x4F776E61626C652F70656E64696E674F776E65722D6E6F742D7A65726F2D6164"
+    },
+    "1379": {
+      "op": "PUSH1",
+      "value": "0x44"
+    },
+    "1381": {
+      "op": "DUP3"
+    },
+    "1382": {
+      "op": "ADD"
+    },
+    "1383": {
+      "op": "MSTORE"
+    },
+    "1384": {
+      "op": "PUSH5",
+      "value": "0x6472657373"
+    },
+    "1390": {
+      "op": "PUSH1",
+      "value": "0xD8"
+    },
+    "1392": {
+      "op": "SHL"
+    },
+    "1393": {
+      "op": "PUSH1",
+      "value": "0x64"
+    },
+    "1395": {
+      "op": "DUP3"
+    },
+    "1396": {
+      "op": "ADD"
+    },
+    "1397": {
+      "op": "MSTORE"
+    },
+    "1398": {
+      "op": "PUSH1",
+      "value": "0x84"
+    },
+    "1400": {
+      "op": "ADD"
+    },
+    "1401": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "PUSH2",
+      "path": "16",
+      "value": "0x2E2"
+    },
+    "1404": {
+      "op": "JUMP"
+    },
+    "1405": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3796, 3869],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "1406": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3895],
+      "op": "PUSH1",
+      "path": "16",
+      "statement": 13,
+      "value": "0x1"
+    },
+    "1408": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "DUP1",
+      "path": "16"
+    },
+    "1409": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "1410": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1412": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1414": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1416": {
+      "op": "SHL"
+    },
+    "1417": {
+      "op": "SUB"
+    },
+    "1418": {
+      "op": "NOT"
+    },
+    "1419": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "AND",
+      "path": "16"
+    },
+    "1420": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1422": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1424": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1426": {
+      "op": "SHL"
+    },
+    "1427": {
+      "op": "SUB"
+    },
+    "1428": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "DUP4",
+      "path": "16"
+    },
+    "1429": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "AND",
+      "path": "16"
+    },
+    "1430": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "1431": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "DUP2",
+      "path": "16"
+    },
+    "1432": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "OR",
+      "path": "16"
+    },
+    "1433": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "1434": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "SWAP2",
+      "path": "16"
+    },
+    "1435": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3882, 3907],
+      "op": "SSTORE",
+      "path": "16"
+    },
+    "1436": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3925, 3952],
+      "op": "PUSH1",
+      "path": "16",
+      "statement": 14,
+      "value": "0x40"
+    },
+    "1438": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3925, 3952],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "1439": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3925, 3952],
+      "op": "PUSH32",
+      "path": "16",
+      "value": "0x239A2DDDED15777FA246AED5F7E1A9BC69A39D4EB4A397034D1D85766CCA7D4C"
+    },
+    "1472": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3925, 3952],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "1473": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1475": {
+      "op": "SWAP1"
+    },
+    "1476": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3925, 3952],
+      "op": "LOG2",
+      "path": "16"
+    },
+    "1477": {
+      "fn": "Ownable.transferOwnership",
+      "offset": [3720, 3960],
+      "op": "POP",
+      "path": "16"
+    },
+    "1478": {
+      "fn": "Ownable.transferOwnership",
+      "jump": "o",
+      "offset": [3720, 3960],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "1479": {
+      "fn": "Ownable._setOwner",
+      "offset": [4462, 4640],
+      "op": "JUMPDEST",
+      "path": "16"
+    },
+    "1480": {
+      "fn": "Ownable._setOwner",
+      "offset": [4519, 4536],
+      "op": "PUSH1",
+      "path": "16",
+      "value": "0x0"
+    },
+    "1482": {
+      "fn": "Ownable._setOwner",
+      "offset": [4539, 4545],
+      "op": "DUP1",
+      "path": "16"
+    },
+    "1483": {
+      "fn": "Ownable._setOwner",
+      "offset": [4539, 4545],
+      "op": "SLOAD",
+      "path": "16"
+    },
+    "1484": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1486": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1488": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1490": {
+      "op": "SHL"
+    },
+    "1491": {
+      "op": "SUB"
+    },
+    "1492": {
+      "fn": "Ownable._setOwner",
+      "offset": [4556, 4574],
+      "op": "DUP4",
+      "path": "16",
+      "statement": 15
+    },
+    "1493": {
+      "fn": "Ownable._setOwner",
+      "offset": [4556, 4574],
+      "op": "DUP2",
+      "path": "16"
+    },
+    "1494": {
+      "fn": "Ownable._setOwner",
+      "offset": [4556, 4574],
+      "op": "AND",
+      "path": "16"
+    },
+    "1495": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1497": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1499": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1501": {
+      "op": "SHL"
+    },
+    "1502": {
+      "op": "SUB"
+    },
+    "1503": {
+      "op": "NOT"
+    },
+    "1504": {
+      "fn": "Ownable._setOwner",
+      "offset": [4556, 4574],
+      "op": "DUP4",
+      "path": "16"
+    },
+    "1505": {
+      "fn": "Ownable._setOwner",
+      "offset": [4556, 4574],
+      "op": "AND",
+      "path": "16"
+    },
+    "1506": {
+      "fn": "Ownable._setOwner",
+      "offset": [4556, 4574],
+      "op": "DUP2",
+      "path": "16"
+    },
+    "1507": {
+      "fn": "Ownable._setOwner",
+      "offset": [4556, 4574],
+      "op": "OR",
+      "path": "16"
+    },
+    "1508": {
+      "fn": "Ownable._setOwner",
+      "offset": [4556, 4574],
+      "op": "DUP5",
+      "path": "16"
+    },
+    "1509": {
+      "fn": "Ownable._setOwner",
+      "offset": [4556, 4574],
+      "op": "SSTORE",
+      "path": "16"
+    },
+    "1510": {
+      "fn": "Ownable._setOwner",
+      "offset": [4590, 4632],
+      "op": "PUSH1",
+      "path": "16",
+      "statement": 16,
+      "value": "0x40"
+    },
+    "1512": {
+      "fn": "Ownable._setOwner",
+      "offset": [4590, 4632],
+      "op": "MLOAD",
+      "path": "16"
+    },
+    "1513": {
+      "fn": "Ownable._setOwner",
+      "offset": [4539, 4545],
+      "op": "SWAP2",
+      "path": "16"
+    },
+    "1514": {
+      "fn": "Ownable._setOwner",
+      "offset": [4539, 4545],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "1515": {
+      "fn": "Ownable._setOwner",
+      "offset": [4539, 4545],
+      "op": "SWAP3",
+      "path": "16"
+    },
+    "1516": {
+      "fn": "Ownable._setOwner",
+      "offset": [4539, 4545],
+      "op": "AND",
+      "path": "16"
+    },
+    "1517": {
+      "fn": "Ownable._setOwner",
+      "offset": [4539, 4545],
+      "op": "SWAP3",
+      "path": "16"
+    },
+    "1518": {
+      "fn": "Ownable._setOwner",
+      "offset": [4539, 4545],
+      "op": "DUP4",
+      "path": "16"
+    },
+    "1519": {
+      "fn": "Ownable._setOwner",
+      "offset": [4539, 4545],
+      "op": "SWAP2",
+      "path": "16"
+    },
+    "1520": {
+      "fn": "Ownable._setOwner",
+      "offset": [4590, 4632],
+      "op": "PUSH32",
+      "path": "16",
+      "value": "0x8BE0079C531659141344CD1FD0A4F28419497F9722A3DAAFE3B4186F6B6457E0"
+    },
+    "1553": {
+      "fn": "Ownable._setOwner",
+      "offset": [4590, 4632],
+      "op": "SWAP2",
+      "path": "16"
+    },
+    "1554": {
+      "fn": "Ownable._setOwner",
+      "offset": [4519, 4536],
+      "op": "SWAP1",
+      "path": "16"
+    },
+    "1555": {
+      "fn": "Ownable._setOwner",
+      "offset": [4590, 4632],
+      "op": "LOG3",
+      "path": "16"
+    },
+    "1556": {
+      "fn": "Ownable._setOwner",
+      "offset": [4508, 4640],
+      "op": "POP",
+      "path": "16"
+    },
+    "1557": {
+      "fn": "Ownable._setOwner",
+      "offset": [4462, 4640],
+      "op": "POP",
+      "path": "16"
+    },
+    "1558": {
+      "fn": "Ownable._setOwner",
+      "jump": "o",
+      "offset": [4462, 4640],
+      "op": "JUMP",
+      "path": "16"
+    },
+    "1559": {
+      "op": "JUMPDEST"
+    },
+    "1560": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1562": {
+      "op": "PUSH1",
+      "value": "0x1"
+    },
+    "1564": {
+      "op": "PUSH1",
+      "value": "0xA0"
+    },
+    "1566": {
+      "op": "SHL"
+    },
+    "1567": {
+      "op": "SUB"
+    },
+    "1568": {
+      "op": "DUP2"
+    },
+    "1569": {
+      "op": "AND"
+    },
+    "1570": {
+      "op": "DUP2"
+    },
+    "1571": {
+      "op": "EQ"
+    },
+    "1572": {
+      "op": "PUSH2",
+      "value": "0x62C"
+    },
+    "1575": {
+      "op": "JUMPI"
+    },
+    "1576": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1578": {
+      "op": "DUP1"
+    },
+    "1579": {
+      "op": "REVERT"
+    },
+    "1580": {
+      "op": "JUMPDEST"
+    },
+    "1581": {
+      "op": "POP"
+    },
+    "1582": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "1583": {
+      "op": "JUMPDEST"
+    },
+    "1584": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1586": {
+      "op": "DUP1"
+    },
+    "1587": {
+      "op": "PUSH1",
+      "value": "0x40"
+    },
+    "1589": {
+      "op": "DUP4"
+    },
+    "1590": {
+      "op": "DUP6"
+    },
+    "1591": {
+      "op": "SUB"
+    },
+    "1592": {
+      "op": "SLT"
+    },
+    "1593": {
+      "op": "ISZERO"
+    },
+    "1594": {
+      "op": "PUSH2",
+      "value": "0x642"
+    },
+    "1597": {
+      "op": "JUMPI"
+    },
+    "1598": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1600": {
+      "op": "DUP1"
+    },
+    "1601": {
+      "op": "REVERT"
+    },
+    "1602": {
+      "op": "JUMPDEST"
+    },
+    "1603": {
+      "op": "DUP3"
+    },
+    "1604": {
+      "op": "CALLDATALOAD"
+    },
+    "1605": {
+      "op": "SWAP2"
+    },
+    "1606": {
+      "op": "POP"
+    },
+    "1607": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1609": {
+      "op": "DUP4"
+    },
+    "1610": {
+      "op": "ADD"
+    },
+    "1611": {
+      "op": "CALLDATALOAD"
+    },
+    "1612": {
+      "op": "PUSH2",
+      "value": "0x654"
+    },
+    "1615": {
+      "op": "DUP2"
+    },
+    "1616": {
+      "op": "PUSH2",
+      "value": "0x617"
+    },
+    "1619": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "1620": {
+      "op": "JUMPDEST"
+    },
+    "1621": {
+      "op": "DUP1"
+    },
+    "1622": {
+      "op": "SWAP2"
+    },
+    "1623": {
+      "op": "POP"
+    },
+    "1624": {
+      "op": "POP"
+    },
+    "1625": {
+      "op": "SWAP3"
+    },
+    "1626": {
+      "op": "POP"
+    },
+    "1627": {
+      "op": "SWAP3"
+    },
+    "1628": {
+      "op": "SWAP1"
+    },
+    "1629": {
+      "op": "POP"
+    },
+    "1630": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "1631": {
+      "op": "JUMPDEST"
+    },
+    "1632": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1634": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1636": {
+      "op": "DUP3"
+    },
+    "1637": {
+      "op": "DUP5"
+    },
+    "1638": {
+      "op": "SUB"
+    },
+    "1639": {
+      "op": "SLT"
+    },
+    "1640": {
+      "op": "ISZERO"
+    },
+    "1641": {
+      "op": "PUSH2",
+      "value": "0x671"
+    },
+    "1644": {
+      "op": "JUMPI"
+    },
+    "1645": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1647": {
+      "op": "DUP1"
+    },
+    "1648": {
+      "op": "REVERT"
+    },
+    "1649": {
+      "op": "JUMPDEST"
+    },
+    "1650": {
+      "op": "DUP2"
+    },
+    "1651": {
+      "op": "CALLDATALOAD"
+    },
+    "1652": {
+      "op": "PUSH2",
+      "value": "0x67C"
+    },
+    "1655": {
+      "op": "DUP2"
+    },
+    "1656": {
+      "op": "PUSH2",
+      "value": "0x617"
+    },
+    "1659": {
+      "jump": "i",
+      "op": "JUMP"
+    },
+    "1660": {
+      "op": "JUMPDEST"
+    },
+    "1661": {
+      "op": "SWAP4"
+    },
+    "1662": {
+      "op": "SWAP3"
+    },
+    "1663": {
+      "op": "POP"
+    },
+    "1664": {
+      "op": "POP"
+    },
+    "1665": {
+      "op": "POP"
+    },
+    "1666": {
+      "jump": "o",
+      "op": "JUMP"
+    },
+    "1667": {
+      "op": "JUMPDEST"
+    },
+    "1668": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1670": {
+      "op": "PUSH1",
+      "value": "0x20"
+    },
+    "1672": {
+      "op": "DUP3"
+    },
+    "1673": {
+      "op": "DUP5"
+    },
+    "1674": {
+      "op": "SUB"
+    },
+    "1675": {
+      "op": "SLT"
+    },
+    "1676": {
+      "op": "ISZERO"
+    },
+    "1677": {
+      "op": "PUSH2",
+      "value": "0x695"
+    },
+    "1680": {
+      "op": "JUMPI"
+    },
+    "1681": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1683": {
+      "op": "DUP1"
+    },
+    "1684": {
+      "op": "REVERT"
+    },
+    "1685": {
+      "op": "JUMPDEST"
+    },
+    "1686": {
+      "op": "DUP2"
+    },
+    "1687": {
+      "op": "MLOAD"
+    },
+    "1688": {
+      "op": "DUP1"
+    },
+    "1689": {
+      "op": "ISZERO"
+    },
+    "1690": {
+      "op": "ISZERO"
+    },
+    "1691": {
+      "op": "DUP2"
+    },
+    "1692": {
+      "op": "EQ"
+    },
+    "1693": {
+      "op": "PUSH2",
+      "value": "0x67C"
+    },
+    "1696": {
+      "op": "JUMPI"
+    },
+    "1697": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1699": {
+      "op": "DUP1"
+    },
+    "1700": {
+      "op": "REVERT"
+    },
+    "1701": {
+      "op": "JUMPDEST"
+    },
+    "1702": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1704": {
+      "op": "DUP3"
+    },
+    "1705": {
+      "op": "NOT"
+    },
+    "1706": {
+      "op": "DUP3"
+    },
+    "1707": {
+      "op": "GT"
+    },
+    "1708": {
+      "op": "ISZERO"
+    },
+    "1709": {
+      "op": "PUSH2",
+      "value": "0x6C6"
+    },
+    "1712": {
+      "op": "JUMPI"
+    },
+    "1713": {
+      "op": "PUSH4",
+      "value": "0x4E487B71"
+    },
+    "1718": {
+      "op": "PUSH1",
+      "value": "0xE0"
+    },
+    "1720": {
+      "op": "SHL"
+    },
+    "1721": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1723": {
+      "op": "MSTORE"
+    },
+    "1724": {
+      "op": "PUSH1",
+      "value": "0x11"
+    },
+    "1726": {
+      "op": "PUSH1",
+      "value": "0x4"
+    },
+    "1728": {
+      "op": "MSTORE"
+    },
+    "1729": {
+      "op": "PUSH1",
+      "value": "0x24"
+    },
+    "1731": {
+      "op": "PUSH1",
+      "value": "0x0"
+    },
+    "1733": {
+      "op": "REVERT"
+    },
+    "1734": {
+      "op": "JUMPDEST"
+    },
+    "1735": {
+      "op": "POP"
+    },
+    "1736": {
+      "op": "ADD"
+    },
+    "1737": {
+      "op": "SWAP1"
+    },
+    "1738": {
+      "jump": "o",
+      "op": "JUMP"
+    }
+  },
+  "sha1": "d3b2bbab663f411d6b8f677178ba1afbf0af19e3",
+  "source": "pragma solidity ^0.8.0;\nimport './interface/IArbitrage.sol';\nimport './interface/IStrategy.sol';\nimport './extern/Manageable.sol';\ncontract GovDao is Manageable {\n    address public arbitrage;\n    address public strategy;\n    uint256 public propurse;\n    constructor(address _strategy, address onwer, address manager)Ownable(onwer) Manageable(manager){\n        strategy = _strategy;\n    }\n\n    function setArbitrage(address _arbitrage) external onlyManager{\n        arbitrage = _arbitrage;\n    }\n\n    function openPostion(\n        uint256 amountOutMinimum,\n        uint160 sqrtPriceLimitX96\n    ) external \n    {\n        IStrategy(strategy).active(propurse);\n        IArbitrage(arbitrage).openPostion(amountOutMinimum, sqrtPriceLimitX96);\n        propurse = propurse+1;\n    }\n\n    function closePostion(\n        uint256 amountOutMinimum,\n        uint160 sqrtPriceLimitX96\n    ) external \n    {\n        IStrategy(strategy).active(propurse);\n        IArbitrage(arbitrage).closePostion(amountOutMinimum, sqrtPriceLimitX96);\n        propurse = propurse+1;\n    }\n\n\n}\n",
+  "sourceMap": "135:963:14:-:0;;;263:135;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;351:7;333:5;2581:24:16;333:5:14;2581:9:16;:24::i;:::-;-1:-1:-1;5266:8:16;:26;;-1:-1:-1;;;;;5266:26:16;;;-1:-1:-1;;;;;;5266:26:16;;;;;;;370:8:14::2;:20:::0;;;;;::::2;::::0;::::2;::::0;;;::::2;::::0;;;-1:-1:-1;135:963:14;;-1:-1:-1;135:963:14;4462:178:16;4519:17;4539:6;;-1:-1:-1;;;;;4556:18:16;;;-1:-1:-1;;;;;;4556:18:16;;;;;;4590:42;;4539:6;;;;;;;4590:42;;4519:17;4590:42;4508:132;4462:178;:::o;14:177:27:-;93:13;;-1:-1:-1;;;;;135:31:27;;125:42;;115:70;;181:1;178;171:12;115:70;14:177;;;:::o;196:378::-;284:6;292;300;353:2;341:9;332:7;328:23;324:32;321:52;;;369:1;366;359:12;321:52;392:40;422:9;392:40;:::i;:::-;382:50;;451:49;496:2;485:9;481:18;451:49;:::i;:::-;441:59;;519:49;564:2;553:9;549:18;519:49;:::i;:::-;509:59;;196:378;;;;;:::o;:::-;135:963:14;;;;;;",
+  "sourcePath": "contracts/Government.sol",
+  "type": "contract"
+}
