@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
@@ -10,7 +11,7 @@ import {
 } from 'react';
 import { validateNumericInput } from './validateNumericInput';
 import { validateAddressInput } from './validateAddressInput';
-import { Button, Select } from '@lidofinance/lido-ui';
+import { Button, Select, ToastError } from '@lidofinance/lido-ui';
 import { NoProgramStyled } from './styles';
 import { InputGroupStyled } from 'shared/ui';
 import { SelectStrategy } from 'features/vesting/selectStrategy';
@@ -18,13 +19,19 @@ import InputsGroup from 'features/vesting/inputsGroup';
 import { ConnectButton } from 'features/wallet/RainbowKit/RainbowButton';
 import { useAccount } from 'wagmi';
 import styled from 'styled-components';
+import useDaoFactory from './useDaoFactory';
+import { ContractAddress, StockIndex, Strategy, StrategyModule } from 'config';
+import { BigNumber } from 'ethers';
+import BN from 'bignumber.js';
 
 export const ClaimForm: FC = () => {
+  const daoFactoryContract = useDaoFactory();
   const [amountTouched, setAmountTouched] = useState(false);
   const [amount] = useState('');
 
   const [addressTouched, setAddressTouched] = useState(false);
   const [address, setAddress] = useState('');
+  const [creating, setCreating] = useState(false);
 
   const { address: account } = useAccount();
 
@@ -44,10 +51,44 @@ export const ClaimForm: FC = () => {
 
   const handleClaim: FormEventHandler = useCallback(
     async (event) => {
+      if (creating) return;
       event.preventDefault();
-      // setIsClaiming(true);
+      console.log('dao: ', daoFactoryContract);
+      if (!daoFactoryContract || !account) return;
+      setCreating(true);
+      try {
+        const stockType = BigNumber.from(1);
+        const module = BigNumber.from(1);
+        daoFactoryContract
+          .deploy(ContractAddress.pool, 0 as any, 1 as any, {
+            from: account,
+          })
+          .then((tx) => {
+            tx.wait(1)
+              .then((res) => {
+                console.log('dao发布成功: ', res);
+                setCreating(false);
+              })
+              .catch(() => {
+                setCreating(false);
+              });
+          })
+          .catch((err) => {
+            console.log('DAO发布出错：', err);
+            setCreating(false);
+          });
+      } catch (e: any) {
+        console.log('catch error: ', e?.reason, JSON.stringify(e || {}));
+        setCreating(false);
+        const msg = e?.reason || JSON.stringify(e || {}) || 'Error';
+        ToastError(msg, {
+          delay: 0,
+          toastId: msg,
+          position: 'top-center',
+        });
+      }
     },
-    [address],
+    [daoFactoryContract],
   );
 
   // const { error: amountError } = validateNumericInput(amount, 'Token amount', {
@@ -73,7 +114,7 @@ export const ClaimForm: FC = () => {
       {account ? (
         <Button
           fullwidth
-          loading={false}
+          loading={creating}
           // disabled={disabled}
           onClick={handleClaim}
         >

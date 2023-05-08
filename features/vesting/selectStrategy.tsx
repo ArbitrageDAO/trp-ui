@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, useCallback, useEffect, useState } from 'react';
 import { SelectProps, Option, Select } from '@lidofinance/lido-ui';
 import { Strategy } from 'config';

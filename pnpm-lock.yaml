@@ -24,6 +24,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.44.0
   '@typescript-eslint/parser': ^5.44.0
   '@wagmi/chains': ^0.2.22
+  bignumber.js: ^9.1.1
   copy-to-clipboard: ^3.3.1
   eslint: ^8.28.0
   eslint-config-next: ^13.0.5
@@ -69,6 +70,7 @@ dependencies:
   '@lidofinance/rpc': 0.17.0
   '@rainbow-me/rainbowkit': 0.12.12_julm6lipsuq4of4foefbt45ffq
   '@wagmi/chains': 0.2.22_typescript@4.9.5
+  bignumber.js: 9.1.1
   copy-to-clipboard: 3.3.3
   eslint-config-next: 13.4.1_jgkqkwom7vrxl4kyi454n2sy2i
   ethers: 5.7.2

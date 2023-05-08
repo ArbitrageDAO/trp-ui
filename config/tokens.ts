@@ -1,3 +1,5 @@
+import type { Address } from 'wagmi';
+
 // Must be lowercase
 const TOKENS_BY_ADDRESS: Record<string, string> = {
   '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0': 'WSTETH', // mainnet
@@ -11,3 +13,12 @@ const TOKENS_BY_ADDRESS: Record<string, string> = {
 export const getTokenByAddress = (address: string): string => {
   return TOKENS_BY_ADDRESS[address.toLowerCase()] ?? '';
 };
+
+export const ContractAddress: Record<string, Address> = {
+  ArbitrageDaoFactory: '0x31ac4eA48902b3a88b668868060DD0a13E62C03b',
+  pool: '0x7Dd5AC81bBaCd4af02604D597558C4ea2e703277',
+  BTC: '0x1C2f71a40E7448Dd578C752b570D676284004048',
+  USDC: '0x9191806b17D80546013bB6dAB6e9709e778Bb130',
+};
+
+export const FEE = 500;

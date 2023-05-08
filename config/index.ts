@@ -4,6 +4,17 @@ export { default as dynamics } from './dynamics';
 export * from './rpc';
 export * from './tokens';
 
+export enum StockIndex {
+  SHORT = '0',
+  LONG = '1',
+}
+
+export enum StrategyModule {
+  EXPERT = '0',
+  SHARE = '1',
+  EVENT = '2',
+}
+
 export enum Strategy {
   EXPERT = 'expert',
   SHARE = 'share',
