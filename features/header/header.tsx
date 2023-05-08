@@ -8,8 +8,9 @@ import {
   Nav,
   NavLink,
 } from './headerStyles';
-import { HeaderWallet } from './headerWallet';
+// import { HeaderWallet } from './headerWallet';
 import { useRouter } from 'next/router';
+import RainbowButton from 'features/wallet/RainbowKit/RainbowButton';
 
 type Route = {
   name: string;
@@ -51,7 +52,8 @@ export const Header: FC = () => {
       </Nav>
 
       <HeaderActionsStyle>
-        <HeaderWallet />
+        {/* <HeaderWallet /> */}
+        <RainbowButton />
       </HeaderActionsStyle>
     </HeaderStyle>
   );

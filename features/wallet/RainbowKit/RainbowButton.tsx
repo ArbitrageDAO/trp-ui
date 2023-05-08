@@ -4,7 +4,7 @@ import { useAccount, useDisconnect, useNetwork } from 'wagmi';
 import styled from 'styled-components';
 import { SupportedChainIds, AUTO_CONNECT_CACHE_KEY } from 'config/chains';
 
-export default function RainbowKitProvider() {
+export default function RainbowButton() {
   const { chain } = useNetwork();
   const { openChainModal } = useChainModal();
   const { address: account } = useAccount({

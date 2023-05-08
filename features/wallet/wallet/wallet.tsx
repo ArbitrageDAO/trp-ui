@@ -5,28 +5,21 @@ import {
   WalletCardComponent,
   FallbackWallet,
 } from 'features/wallet';
-import { useVestingsContext } from 'features/vesting';
-import { WalletLocked } from './wallet-locked';
-import { WalletUnclaimed } from './wallet-unclaimed';
-import { WalletPeriod } from './wallet-period';
+// import { WalletLocked } from './wallet-locked';
+// import { WalletPeriod } from './wallet-period';
 import { WalletCardStyled } from './wallet.style';
-import { WalletVesting } from './wallet-vesting';
 
 const WalletComponent: WalletCardComponent = (props) => {
-  const { currentVesting } = useVestingsContext();
-
-  if (!currentVesting) return null;
-
   return (
     <WalletCardStyled {...props}>
       <WalletCardRow>
-        {currentVesting && <WalletLocked />}
-        {currentVesting && <WalletVesting vestingAddress={currentVesting} />}
+        {/* {currentVesting && <WalletLocked />}
+        {currentVesting && <WalletVesting vestingAddress={currentVesting} />} */}
       </WalletCardRow>
       <Divider />
       <WalletCardRow>
-        {currentVesting && <WalletUnclaimed />}
-        {currentVesting && <WalletPeriod />}
+        {/* {currentVesting && <WalletUnclaimed />}
+        {currentVesting && <WalletPeriod />} */}
       </WalletCardRow>
     </WalletCardStyled>
   );
