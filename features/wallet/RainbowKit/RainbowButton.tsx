@@ -1,10 +1,23 @@
 import React, { useEffect } from 'react';
-import { ConnectButton, useChainModal } from '@rainbow-me/rainbowkit';
+import {
+  ConnectButton as RainbowBTN,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
 import { useAccount, useDisconnect, useNetwork } from 'wagmi';
 import styled from 'styled-components';
 import { SupportedChainIds, AUTO_CONNECT_CACHE_KEY } from 'config/chains';
 
-export default function RainbowButton() {
+type Props = {
+  chainSelector?: boolean;
+  showBalance?: boolean;
+  style?: React.CSSProperties;
+};
+
+export default function RainbowButton({
+  chainSelector = false,
+  showBalance = false,
+  style,
+}: Props) {
   const { chain } = useNetwork();
   const { openChainModal } = useChainModal();
   const { address: account } = useAccount({
@@ -47,14 +60,47 @@ export default function RainbowButton() {
   }, [chain, openChainModal, account]);
 
   return (
-    <Wrapper>
-      <ConnectButton showBalance={false} chainStatus="full" />
+    <Wrapper
+      chainSelector={chainSelector}
+      account={Boolean(account)}
+      style={style}
+    >
+      <RainbowBTN showBalance={showBalance} chainStatus="full" />
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div`
+export const ConnectButton = (props: Props) => {
+  return (
+    <ConnectWrapper>
+      <RainbowButton {...props} />
+    </ConnectWrapper>
+  );
+};
+
+const Wrapper = styled.div<{ chainSelector: boolean; account: boolean }>`
+  border-radius: 10px;
+  width: 100%;
   button[aria-label='Chain Selector'] {
-    display: none;
+    display: ${({ chainSelector }) => (chainSelector ? 'flex' : 'none')};
+  }
+  button {
+    width: ${({ chainSelector }) => (chainSelector ? 'auto' : '100%')};
+    text-align: center !important;
+    :hover {
+      scale: 1 !important;
+    }
+    &,
+    & > div {
+      background: ${({ account }) =>
+        account ? '#fff !important' : 'transparent'};
+    }
+  }
+`;
+
+const ConnectWrapper = styled.div`
+  button {
+    height: 50px !important;
+    font-size: 14px !important;
   }
 `;

@@ -5,12 +5,15 @@ import { InputGroupStyled } from 'shared/ui';
 import { InputAmount } from 'shared/ui/inputAmount';
 import { Form } from './snapshotFormStyles';
 import SelectParticipation from 'features/vesting/selectParticipation';
+import { useAccount } from 'wagmi';
+import { ConnectButton } from 'features/wallet/RainbowKit/RainbowButton';
 
 type SnapshotFormData = {
   delegateAddress: string;
 };
 
 export const SnapshotForm = () => {
+  const { address: account } = useAccount();
   const {
     handleSubmit,
     formState: { isValid, errors },
@@ -61,9 +64,13 @@ export const SnapshotForm = () => {
             </Button>
           }
         />
-        <Button type="submit" disabled={!isValid}>
-          Delegate
-        </Button>
+        {account ? (
+          <Button type="submit" disabled={!isValid}>
+            Delegate
+          </Button>
+        ) : (
+          <ConnectButton />
+        )}
       </Form>
     </Block>
   );

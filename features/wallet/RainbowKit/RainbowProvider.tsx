@@ -36,9 +36,9 @@ const wagmiClient = createClient({
 });
 
 const theme = lightTheme({
-  accentColor: '#00B459',
-  accentColorForeground: '#E0F6EB',
-  borderRadius: 'large',
+  accentColor: '#00a3ff',
+  accentColorForeground: '#FFF',
+  borderRadius: 'medium',
   fontStack: 'system',
   overlayBlur: 'small',
 });

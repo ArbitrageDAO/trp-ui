@@ -53,7 +53,7 @@ export const Header: FC = () => {
 
       <HeaderActionsStyle>
         {/* <HeaderWallet /> */}
-        <RainbowButton />
+        <RainbowButton showBalance chainSelector />
       </HeaderActionsStyle>
     </HeaderStyle>
   );

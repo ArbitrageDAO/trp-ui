@@ -12,11 +12,12 @@ import { validateNumericInput } from './validateNumericInput';
 import { validateAddressInput } from './validateAddressInput';
 import { Button, Select } from '@lidofinance/lido-ui';
 import { NoProgramStyled } from './styles';
-import { useWeb3 } from 'reef-knot';
 import { InputGroupStyled } from 'shared/ui';
 import { SelectStrategy } from 'features/vesting/selectStrategy';
 import InputsGroup from 'features/vesting/inputsGroup';
-import RainbowButton from 'features/wallet/RainbowKit/RainbowButton';
+import { ConnectButton } from 'features/wallet/RainbowKit/RainbowButton';
+import { useAccount } from 'wagmi';
+import styled from 'styled-components';
 
 export const ClaimForm: FC = () => {
   const [amountTouched, setAmountTouched] = useState(false);
@@ -25,7 +26,7 @@ export const ClaimForm: FC = () => {
   const [addressTouched, setAddressTouched] = useState(false);
   const [address, setAddress] = useState('');
 
-  const { active, account } = useWeb3();
+  const { address: account } = useAccount();
 
   const didMountRef = useRef(false);
 
@@ -69,7 +70,7 @@ export const ClaimForm: FC = () => {
         <SelectStrategy />
       </InputGroupStyled>
       <InputsGroup />
-      {active ? (
+      {account ? (
         <Button
           fullwidth
           loading={false}
@@ -79,7 +80,7 @@ export const ClaimForm: FC = () => {
           Create
         </Button>
       ) : (
-        <RainbowButton />
+        <ConnectButton />
       )}
     </form>
   );
