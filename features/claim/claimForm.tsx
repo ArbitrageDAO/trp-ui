@@ -9,45 +9,56 @@ import {
   useRef,
   useState,
 } from 'react';
-import { validateNumericInput } from './validateNumericInput';
-import { validateAddressInput } from './validateAddressInput';
-import { Button, Select, ToastError } from '@lidofinance/lido-ui';
-import { NoProgramStyled } from './styles';
+import {
+  Button,
+  Select,
+  ToastError,
+  Option,
+  ToastSuccess,
+} from '@lidofinance/lido-ui';
 import { InputGroupStyled } from 'shared/ui';
-import { SelectStrategy } from 'features/vesting/selectStrategy';
-import InputsGroup from 'features/vesting/inputsGroup';
 import { ConnectButton } from 'features/wallet/RainbowKit/RainbowButton';
 import { useAccount } from 'wagmi';
-import styled from 'styled-components';
 import useDaoFactory from './useDaoFactory';
-import { ContractAddress, StockIndex, Strategy, StrategyModule } from 'config';
-import { BigNumber } from 'ethers';
-import BN from 'bignumber.js';
+import {
+  ContractAddress,
+  Stock,
+  StockIndex,
+  Strategy,
+  StrategyModule,
+} from 'config';
+
+const strategies = [Strategy.EXPERT, Strategy.SHARE, Strategy.EVENT];
+const stockTypes = [Stock.SHORT, Stock.LONG];
 
 export const ClaimForm: FC = () => {
   const daoFactoryContract = useDaoFactory();
-  const [amountTouched, setAmountTouched] = useState(false);
-  const [amount] = useState('');
-
-  const [addressTouched, setAddressTouched] = useState(false);
-  const [address, setAddress] = useState('');
   const [creating, setCreating] = useState(false);
+  const [currentStrategy, setCurrentStrategy] = useState<StrategyModule>(
+    StrategyModule.EXPERT,
+  );
+  const [currentStockType, setCurrentStockType] = useState<StockIndex>(
+    StockIndex.LONG,
+  );
 
   const { address: account } = useAccount();
 
   const didMountRef = useRef(false);
 
-  useEffect(() => {
-    if (didMountRef.current) setAmountTouched(true);
-  }, [amount]);
-  useEffect(() => {
-    if (didMountRef.current) setAddressTouched(true);
-  }, [address]);
-
   // skipping first render
   useEffect(() => {
     didMountRef.current = true;
   }, []);
+
+  const errHandle = (e: any) => {
+    const msg = e?.reason || JSON.stringify(e || {}) || 'Error';
+    ToastError(msg, {
+      delay: 0,
+      toastId: msg,
+      position: 'top-center',
+    });
+    setCreating(false);
+  };
 
   const handleClaim: FormEventHandler = useCallback(
     async (event) => {
@@ -57,50 +68,61 @@ export const ClaimForm: FC = () => {
       if (!daoFactoryContract || !account) return;
       setCreating(true);
       try {
-        const stockType = BigNumber.from(1);
-        const module = BigNumber.from(1);
         daoFactoryContract
-          .deploy(ContractAddress.pool, 0 as any, 1 as any, {
-            from: account,
-          })
+          .deploy(
+            ContractAddress.pool,
+            currentStockType as any,
+            currentStrategy as any,
+            {
+              from: account,
+            },
+          )
           .then((tx) => {
             tx.wait(1)
               .then((res) => {
                 console.log('dao发布成功: ', res);
                 setCreating(false);
+                ToastSuccess('Created Successfully.', {
+                  delay: 0,
+                  toastId: 'created',
+                  position: 'top-center',
+                });
               })
-              .catch(() => {
-                setCreating(false);
+              .catch((error: any) => {
+                errHandle(error);
               });
           })
           .catch((err) => {
             console.log('DAO发布出错：', err);
-            setCreating(false);
+            errHandle(err);
           });
       } catch (e: any) {
         console.log('catch error: ', e?.reason, JSON.stringify(e || {}));
-        setCreating(false);
-        const msg = e?.reason || JSON.stringify(e || {}) || 'Error';
-        ToastError(msg, {
-          delay: 0,
-          toastId: msg,
-          position: 'top-center',
-        });
+        errHandle(e);
       }
     },
     [daoFactoryContract],
   );
 
-  // const { error: amountError } = validateNumericInput(amount, 'Token amount', {
-  //   limit: unclaimed.data,
-  // });
-  // const { error: addressError } = validateAddressInput(address, {
-  //   allowEmpty: true,
-  // });
+  const handleStrategySelect = useCallback(
+    (strategy: any) => {
+      if (strategy === currentStrategy) {
+        return;
+      }
+      setCurrentStrategy(strategy);
+    },
+    [currentStrategy, setCurrentStrategy],
+  );
 
-  // if (account != null && active && !isLoading && currentVesting == null) {
-  //   return <NoProgramStyled>You don&apos;t have a program</NoProgramStyled>;
-  // }
+  const handleStockSelect = useCallback(
+    (stock: any) => {
+      if (stock === currentStockType) {
+        return;
+      }
+      setCurrentStockType(stock);
+    },
+    [currentStockType, setCurrentStockType],
+  );
 
   return (
     <form onSubmit={handleClaim}>
@@ -108,16 +130,23 @@ export const ClaimForm: FC = () => {
         <Button size="sm" variant="translucent" color="secondary">
           Strategy
         </Button>
-        <SelectStrategy />
+        <Select value={currentStrategy} onChange={handleStrategySelect}>
+          {strategies?.map((strategy, index) => (
+            <Option key={strategy} value={`${index}` as StrategyModule}>
+              {strategy}
+            </Option>
+          ))}
+        </Select>
+        <Select value={currentStockType} onChange={handleStockSelect}>
+          {stockTypes?.map((stock, index) => (
+            <Option key={stock} value={`${index}` as StockIndex}>
+              {stock}
+            </Option>
+          ))}
+        </Select>
       </InputGroupStyled>
-      <InputsGroup />
       {account ? (
-        <Button
-          fullwidth
-          loading={creating}
-          // disabled={disabled}
-          onClick={handleClaim}
-        >
+        <Button fullwidth loading={creating} onClick={handleClaim}>
           Create
         </Button>
       ) : (

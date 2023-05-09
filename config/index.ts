@@ -4,6 +4,11 @@ export { default as dynamics } from './dynamics';
 export * from './rpc';
 export * from './tokens';
 
+export enum Stock {
+  LONG = 'Long',
+  SHORT = 'Short',
+}
+
 export enum StockIndex {
   SHORT = '0',
   LONG = '1',
