@@ -22,3 +22,8 @@ export const ContractAddress: Record<string, Address> = {
 };
 
 export const FEE = 500;
+
+export enum TOKENS {
+  BTC = 'BTC',
+  USDC = 'USDC',
+}

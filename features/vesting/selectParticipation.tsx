@@ -1,36 +1,53 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Option, Select } from '@lidofinance/lido-ui';
-import { PartiOperations, PartiOptions } from 'config';
+import { PartiOptions } from 'config';
+import { Address } from 'wagmi';
 
 const partiOptions = [
   PartiOptions.PARTICIPATION,
   PartiOptions.NON_PARTICIPATION,
 ];
-const operations = {
-  [PartiOptions.PARTICIPATION]: [
-    PartiOperations.DEPOSIT,
-    PartiOperations.ENTRY,
-    PartiOperations.LIQUID,
-    PartiOperations.WITHDRAW,
-  ],
-  [PartiOptions.NON_PARTICIPATION]: [PartiOperations.DEPOSIT],
+
+type Props = {
+  partiList: Address[];
+  nonPartiList: Address[];
+  curAddress: Address;
+  setCurAddress: React.Dispatch<React.SetStateAction<Address>>;
+  curParti: PartiOptions;
+  setCurParti: React.Dispatch<React.SetStateAction<PartiOptions>>;
 };
-export default function SelectParticipation() {
-  const [curParti, setCurParti] = useState<PartiOptions>(
-    PartiOptions.PARTICIPATION,
+
+export default function SelectParticipation({
+  partiList,
+  nonPartiList,
+  curAddress,
+  setCurAddress,
+  curParti,
+  setCurParti,
+}: Props) {
+  const [curList, setCurList] = useState<Address[]>(partiList);
+
+  const updateList = useCallback(
+    (parti?: PartiOptions) => {
+      const isParti = (parti ?? curParti) === PartiOptions.PARTICIPATION;
+      const newList = isParti ? partiList : nonPartiList;
+      setCurList(newList);
+      setCurAddress(newList[0]);
+    },
+    [partiList, nonPartiList, curParti, setCurList, setCurAddress],
   );
-  const [curOperation, setCurOperation] = useState<PartiOperations>(
-    PartiOperations.DEPOSIT,
-  );
-  const curOperations = useMemo(() => operations[curParti], [curParti]);
+
+  useEffect(() => {
+    updateList();
+  }, [partiList, nonPartiList, updateList]);
 
   const selectParti = (e: PartiOptions) => {
     setCurParti(e);
-    setCurOperation(operations[e][0]);
+    updateList(e);
   };
 
-  const selectOpt = (e: PartiOperations) => {
-    setCurOperation(e);
+  const selectAddress = (e: Address) => {
+    setCurAddress(e);
   };
 
   return (
@@ -43,12 +60,14 @@ export default function SelectParticipation() {
         ))}
       </Select>
       <Select
-        value={curOperation}
-        onChange={(e) => selectOpt(e as PartiOperations)}
+        value={curAddress}
+        onChange={(e) => selectAddress(e as Address)}
+        disabled={!curList.length}
+        placeholder="Loading...."
       >
-        {curOperations.map((operation) => (
-          <Option key={operation} value={operation}>
-            {operation}
+        {curList.map((address) => (
+          <Option key={address} value={address}>
+            {address}
           </Option>
         ))}
       </Select>

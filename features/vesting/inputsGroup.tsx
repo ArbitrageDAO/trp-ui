@@ -1,21 +1,36 @@
-import { useState } from 'react';
+import React from 'react';
 import { Option, Select, Button } from '@lidofinance/lido-ui';
 import { InputGroupStyled } from 'shared/ui';
 import { InputAmount } from 'shared/ui/inputAmount';
 import styled from 'styled-components';
+import { TOKENS, StockIndex, Stock } from 'config';
 // import { isMobile } from 'react-device-detect';
 
-const coins = ['BTC', 'ETH'];
-const types = ['Long', 'Short'];
+const coins = [TOKENS.BTC, TOKENS.USDC];
+const types = [Stock.SHORT, Stock.LONG];
 
-export default function InputsGroup() {
-  const [selectedCoin, setSelectedCoin] = useState('BTC');
-  const [selectedType, setSelectedType] = useState('Long');
+type Props = {
+  selectedCoin: TOKENS;
+  setSelectedCoin: React.Dispatch<React.SetStateAction<TOKENS>>;
+  stockType: StockIndex;
+  setStockType: React.Dispatch<React.SetStateAction<StockIndex>>;
+  inputAmount: number;
+  setInputAmount: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export default function InputsGroup({
+  selectedCoin,
+  setSelectedCoin,
+  stockType,
+  setStockType,
+  inputAmount,
+  setInputAmount,
+}: Props) {
   return (
     <Wrapper fullwidth error={null} style={{ height: 56 }}>
       <SelectStyled
         value={selectedCoin}
-        onChange={(e: string) => setSelectedCoin(e)}
+        onChange={(e: TOKENS) => setSelectedCoin(e)}
       >
         {coins.map((coin) => (
           <Option key={coin} value={coin}>
@@ -24,11 +39,11 @@ export default function InputsGroup() {
         ))}
       </SelectStyled>
       <SelectStyled
-        value={selectedType}
-        onChange={(e: string) => setSelectedType(e)}
+        value={stockType}
+        onChange={(e: StockIndex) => setStockType(e)}
       >
-        {types.map((type) => (
-          <Option key={type} value={type}>
+        {types.map((type, index) => (
+          <Option key={type} value={`${index}` as StockIndex}>
             {type}
           </Option>
         ))}
@@ -39,6 +54,14 @@ export default function InputsGroup() {
             $
           </Button>
         }
+        value={inputAmount}
+        onChange={(e: number) => {
+          console.log('onChange: ', Number(e));
+          const num = Number(e);
+          if (num >= 0) {
+            setInputAmount(num);
+          }
+        }}
       />
     </Wrapper>
   );
