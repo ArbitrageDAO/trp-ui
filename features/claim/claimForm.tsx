@@ -31,7 +31,7 @@ import {
 const strategies = [Strategy.EXPERT, Strategy.SHARE, Strategy.EVENT];
 const stockTypes = [Stock.SHORT, Stock.LONG];
 
-export const ClaimForm: FC = () => {
+const ClaimForm: FC = () => {
   const daoFactoryContract = useDaoFactory();
   const [creating, setCreating] = useState(false);
   const [currentStrategy, setCurrentStrategy] = useState<StrategyModule>(
@@ -155,3 +155,5 @@ export const ClaimForm: FC = () => {
     </form>
   );
 };
+
+export default ClaimForm;

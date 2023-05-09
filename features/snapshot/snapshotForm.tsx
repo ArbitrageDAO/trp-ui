@@ -13,8 +13,6 @@ import useDaoFactory from 'features/claim/useDaoFactory';
 import type { Address } from 'wagmi';
 import { BigNumber } from 'ethers';
 import { PartiOptions, TOKENS, StockIndex } from 'config';
-// import { ethers } from 'ethers';
-// import { ArbitrageUniV3__factory } from 'generated';
 
 type SnapshotFormData = {
   delegateAddress: string;

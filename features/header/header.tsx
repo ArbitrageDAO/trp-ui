@@ -10,7 +10,12 @@ import {
 } from './headerStyles';
 // import { HeaderWallet } from './headerWallet';
 import { useRouter } from 'next/router';
-import RainbowButton from 'features/wallet/RainbowKit/RainbowButton';
+import dynamic from 'next/dynamic';
+
+const RainbowButton = dynamic(
+  import('features/wallet/RainbowKit/RainbowButton'),
+  { ssr: false },
+);
 
 type Route = {
   name: string;
@@ -33,7 +38,6 @@ const routes: Route[] = [
 
 export const Header: FC = () => {
   const router = useRouter();
-
   return (
     <HeaderStyle size="full" forwardedAs="header">
       <HeaderLogoStyle>

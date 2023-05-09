@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { GetStaticProps } from 'next';
 import { Block } from '@lidofinance/lido-ui';
 import { Layout } from 'features/layout';
-import { ClaimForm } from 'features/claim';
+import ClaimForm from 'features/claim';
 import { Section } from 'shared/ui/section';
 import { FAQ } from 'features/faq';
 import { MainSubtitle, MainTitle } from 'shared/ui';

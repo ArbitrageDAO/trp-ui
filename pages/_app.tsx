@@ -9,8 +9,6 @@ import {
 } from '@lidofinance/lido-ui';
 import { withCsp } from 'shared/api/withCsp';
 import { GlobalStyle } from 'shared/ui';
-// import { ClaimingProvider } from 'features/claim';
-// import { VestingsProvider } from 'features/vesting';
 import RainBowProvider from 'features/wallet/RainbowKit/RainbowProvider';
 
 // Migrations old cookies to new cross domain cookies

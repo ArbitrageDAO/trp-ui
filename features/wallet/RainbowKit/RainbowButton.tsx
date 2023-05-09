@@ -61,8 +61,8 @@ export default function RainbowButton({
 
   return (
     <Wrapper
-      chainSelector={chainSelector}
-      account={Boolean(account)}
+      chainSelector={chainSelector ? '1' : '0'}
+      account={account ?? ''}
       style={style}
     >
       <RainbowBTN showBalance={showBalance} chainStatus="full" />
@@ -70,19 +70,20 @@ export default function RainbowButton({
   );
 }
 
-export const ConnectButton = (props: Props) => {
+export const ConnectButton = () => {
   return (
     <ConnectWrapper>
-      <RainbowButton {...props} />
+      <RainbowButton />
     </ConnectWrapper>
   );
 };
 
-const Wrapper = styled.div<{ chainSelector: boolean; account: boolean }>`
+const Wrapper = styled.div<{ chainSelector: string; account: string }>`
   border-radius: 10px;
   width: 100%;
   button[aria-label='Chain Selector'] {
-    display: ${({ chainSelector }) => (chainSelector ? 'flex' : 'none')};
+    display: ${({ chainSelector }) =>
+      chainSelector === '1' ? 'flex' : 'none'};
   }
   button {
     width: ${({ chainSelector }) => (chainSelector ? 'auto' : '100%')};
