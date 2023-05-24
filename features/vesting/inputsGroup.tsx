@@ -4,18 +4,18 @@ import { InputGroupStyled } from 'shared/ui';
 import { InputAmount } from 'shared/ui/inputAmount';
 import styled from 'styled-components';
 import { TOKENS, StockIndex, Stock } from 'config';
-// import { isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 
-const coins = [TOKENS.BTC, TOKENS.USDC];
+const coins = [TOKENS.BTC];
 const types = [Stock.SHORT, Stock.LONG];
 
 type Props = {
   selectedCoin: TOKENS;
-  setSelectedCoin: React.Dispatch<React.SetStateAction<TOKENS>>;
+  setSelectedCoin: SetState<TOKENS>;
   stockType: StockIndex;
-  setStockType: React.Dispatch<React.SetStateAction<StockIndex>>;
+  setStockType: SetState<StockIndex>;
   inputAmount: number;
-  setInputAmount: React.Dispatch<React.SetStateAction<number>>;
+  setInputAmount: SetState<number>;
 };
 
 export default function InputsGroup({
@@ -31,6 +31,7 @@ export default function InputsGroup({
       <SelectStyled
         value={selectedCoin}
         onChange={(e: TOKENS) => setSelectedCoin(e)}
+        arrow={isMobile ? 'small' : 'default'}
       >
         {coins.map((coin) => (
           <Option key={coin} value={coin}>
@@ -41,6 +42,7 @@ export default function InputsGroup({
       <SelectStyled
         value={stockType}
         onChange={(e: StockIndex) => setStockType(e)}
+        arrow={isMobile ? 'small' : 'default'}
       >
         {types.map((type, index) => (
           <Option key={type} value={`${index}` as StockIndex}>

@@ -1,5 +1,14 @@
 import { memo } from 'react';
-import { Block, Table, Thead, Tbody, Tr, Th, Td } from '@lidofinance/lido-ui';
+import {
+  Block,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Address as ShortHash,
+} from '@lidofinance/lido-ui';
 import styled from 'styled-components';
 import type { Address } from 'wagmi';
 
@@ -9,12 +18,6 @@ type Props = {
 };
 
 export const FAQ = memo(({ createdABList, createdDaoList }: Props) => {
-  const shortAddress = (address: string) => {
-    return `${address.substring(0, 8)}....${address.substring(
-      address.length - 9,
-      address.length - 1,
-    )}`;
-  };
   return (
     <Block>
       <StyledTable style={{ width: '100%', textAlign: 'center' }}>
@@ -28,8 +31,11 @@ export const FAQ = memo(({ createdABList, createdDaoList }: Props) => {
           {createdABList.length > 0 &&
             createdABList.map((_, index) => (
               <Tr key={createdABList[index]}>
-                <Td>{shortAddress(createdABList[index])}</Td>
-                <Td>{shortAddress(createdDaoList[index])}</Td>
+                {[createdDaoList[index], createdABList[index]].map((i) => (
+                  <Td key={i}>
+                    <ShortHash address={i} symbols={8} as="a" title={i} />
+                  </Td>
+                ))}
               </Tr>
             ))}
         </Tbody>

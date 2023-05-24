@@ -2,19 +2,20 @@ import { useState, useEffect, useCallback } from 'react';
 import { Option, Select } from '@lidofinance/lido-ui';
 import { PartiOptions } from 'config';
 import { Address } from 'wagmi';
+import { isMobile } from 'react-device-detect';
 
-const partiOptions = [
-  PartiOptions.PARTICIPATION,
-  PartiOptions.NON_PARTICIPATION,
-];
+// const partiOptions = [
+//   PartiOptions.PARTICIPATION,
+//   PartiOptions.NON_PARTICIPATION,
+// ];
 
 type Props = {
   partiList: Address[];
   nonPartiList: Address[];
   curAddress: Address;
-  setCurAddress: React.Dispatch<React.SetStateAction<Address>>;
+  setCurAddress: SetState<Address>;
   curParti: PartiOptions;
-  setCurParti: React.Dispatch<React.SetStateAction<PartiOptions>>;
+  setCurParti: SetState<PartiOptions>;
 };
 
 export default function SelectParticipation({
@@ -23,10 +24,9 @@ export default function SelectParticipation({
   curAddress,
   setCurAddress,
   curParti,
-  setCurParti,
-}: Props) {
+}: // setCurParti,
+Props) {
   const [curList, setCurList] = useState<Address[]>(partiList);
-
   const updateList = useCallback(
     (parti?: PartiOptions) => {
       const isParti = (parti ?? curParti) === PartiOptions.PARTICIPATION;
@@ -41,10 +41,10 @@ export default function SelectParticipation({
     updateList();
   }, [partiList, nonPartiList, updateList]);
 
-  const selectParti = (e: PartiOptions) => {
-    setCurParti(e);
-    updateList(e);
-  };
+  // const selectParti = (e: PartiOptions) => {
+  //   setCurParti(e);
+  //   updateList(e);
+  // };
 
   const selectAddress = (e: Address) => {
     setCurAddress(e);
@@ -52,18 +52,23 @@ export default function SelectParticipation({
 
   return (
     <>
-      <Select value={curParti} onChange={(e) => selectParti(e as PartiOptions)}>
+      {/* <Select
+        value={curParti}
+        onChange={(e) => selectParti(e as PartiOptions)}
+        arrow={isMobile ? 'small' : 'default'}
+      >
         {partiOptions.map((opt) => (
           <Option key={opt} value={opt}>
             {opt}
           </Option>
         ))}
-      </Select>
+      </Select> */}
       <Select
         value={curAddress}
         onChange={(e) => selectAddress(e as Address)}
         disabled={!curList.length}
         placeholder="Loading...."
+        arrow={isMobile ? 'small' : 'default'}
       >
         {curList.map((address) => (
           <Option key={address} value={address}>

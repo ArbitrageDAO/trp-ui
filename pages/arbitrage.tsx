@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import { Layout } from 'features/layout';
 import { MainSubtitle, MainTitle } from 'shared/ui';
 import { Wallet } from 'features/wallet';
-import { SnapshotForm } from 'features/snapshot';
+import SnapshotForm from 'features/snapshot';
 
 const Snapshot: FC = () => {
   return (

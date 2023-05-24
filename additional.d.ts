@@ -14,3 +14,5 @@ type RuntimeConfig = {
   alchemyApiKey?: string;
   apiProviderUrls?: Record<number, string>;
 };
+
+type SetState<T> = React.Dispatch<React.SetStateAction<T>>;

@@ -35,13 +35,11 @@ const stockTypes = [Stock.SHORT, Stock.LONG];
 
 type List = Address[];
 
-type SetState = React.Dispatch<React.SetStateAction<List>>;
-
 type Props = {
   createdDaoList: List;
-  setCreatedDaoList: SetState;
+  setCreatedDaoList: SetState<List>;
   createdABList: List;
-  setCreatedABList: SetState;
+  setCreatedABList: SetState<List>;
 };
 
 const ClaimForm = ({
@@ -106,6 +104,7 @@ const ClaimForm = ({
                   toastId: 'created',
                   position: 'top-center',
                 });
+                queryContractList();
               })
               .catch((error: any) => {
                 errHandle(error);
@@ -145,26 +144,35 @@ const ClaimForm = ({
 
   const queryContractList = async () => {
     if (!daoFactoryContract || !account || !signer) return;
-    const userIndex = (await daoFactoryContract.user_index(account)).toNumber();
-    const factoryCount = (await daoFactoryContract.factory_count()).toNumber();
-    const myDaoList = createdDaoList ?? [];
-    const myABList = createdABList ?? [];
-    for (let i = 1; i <= factoryCount; i++) {
-      if (i <= userIndex) {
-        const myArbitrageDao = await daoFactoryContract.user_arbitragedao(
-          account,
-          BigNumber.from(i),
-        );
-        const arbitrageDao = await daoFactoryContract.factory_arbitragedao(
-          BigNumber.from(i),
-        );
-        myDaoList.push(myArbitrageDao.arbitrage);
-        myABList.push(arbitrageDao.arbitrage);
+    try {
+      const userIndex = (
+        await daoFactoryContract.user_index(account)
+      ).toNumber();
+      const factoryCount = (
+        await daoFactoryContract.factory_count()
+      ).toNumber();
+      const myDaoList = createdDaoList ?? [];
+      const myABList = createdABList ?? [];
+      for (let i = 1; i <= factoryCount; i++) {
+        if (i <= userIndex) {
+          const index = BigNumber.from(i);
+          const myArbitrageDao = await daoFactoryContract.user_arbitragedao(
+            account,
+            index,
+          );
+          const arbitrageDao = await daoFactoryContract.factory_arbitragedao(
+            index,
+          );
+          myDaoList.push(myArbitrageDao.arbitrage);
+          myABList.push(arbitrageDao.arbitrage);
+        }
       }
+      console.log('my parti list: ', myDaoList, myABList);
+      setCreatedDaoList(() => [...myDaoList]);
+      setCreatedABList(() => [...myABList]);
+    } catch (e) {
+      console.log(e);
     }
-    console.log('my parti list: ', myDaoList, myABList);
-    setCreatedDaoList(() => [...myDaoList]);
-    setCreatedABList(() => [...myABList]);
   };
 
   useEffect(() => {

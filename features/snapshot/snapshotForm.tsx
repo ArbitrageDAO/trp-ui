@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Block, Button } from '@lidofinance/lido-ui';
+import { Block, Button, Checkbox } from '@lidofinance/lido-ui';
 import { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { InputGroupStyled } from 'shared/ui';
@@ -18,7 +18,12 @@ type SnapshotFormData = {
   delegateAddress: string;
 };
 
-export const SnapshotForm = () => {
+const partiOptions = [
+  PartiOptions.PARTICIPATION,
+  PartiOptions.NON_PARTICIPATION,
+];
+
+export default function SnapshotForm() {
   const { data: signer } = useSigner();
   const { address: account } = useAccount();
   const [partiList, setPartiList] = useState<Address[]>([]);
@@ -27,7 +32,7 @@ export const SnapshotForm = () => {
     PartiOptions.PARTICIPATION,
   );
   const [curAddress, setCurAddress] = useState<Address>(partiList[0]);
-  const [inputAmout, setInputAmount] = useState<number>(0);
+  const [inputAmount, setInputAmount] = useState<number>(0);
   const [selectedCoin, setSelectedCoin] = useState<TOKENS>(TOKENS.BTC);
   const [stockType, setStockType] = useState<StockIndex>(StockIndex.SHORT);
   const {
@@ -79,6 +84,26 @@ export const SnapshotForm = () => {
   return (
     <Block>
       <Form onSubmit={handleSubmit(runTransaction)}>
+        <InputGroupStyled>
+          {partiOptions.map((opt) => (
+            <Checkbox
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                fontSize: '14px !important',
+                fontWeight: 'bold !important',
+                textTransform: 'capitalize',
+              }}
+              label={opt}
+              key={opt}
+              value={opt}
+              onChange={() => {
+                //
+              }}
+            />
+          ))}
+        </InputGroupStyled>
+
         <InputGroupStyled
           fullwidth
           error={errors.delegateAddress?.message?.toString()}
@@ -93,7 +118,7 @@ export const SnapshotForm = () => {
           />
         </InputGroupStyled>
         <InputsGroup
-          inputAmount={inputAmout}
+          inputAmount={inputAmount}
           setInputAmount={setInputAmount}
           setSelectedCoin={setSelectedCoin}
           selectedCoin={selectedCoin}
@@ -110,4 +135,4 @@ export const SnapshotForm = () => {
       </Form>
     </Block>
   );
-};
+}
