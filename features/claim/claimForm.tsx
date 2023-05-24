@@ -18,7 +18,7 @@ import {
 } from '@lidofinance/lido-ui';
 import { InputGroupStyled } from 'shared/ui';
 import { ConnectButton } from 'features/wallet/RainbowKit/RainbowButton';
-import { useAccount } from 'wagmi';
+import { useAccount, useSigner } from 'wagmi';
 import useDaoFactory from './useDaoFactory';
 import {
   ContractAddress,
@@ -27,12 +27,31 @@ import {
   Strategy,
   StrategyModule,
 } from 'config';
+import type { Address } from 'wagmi';
+import { BigNumber } from 'ethers';
 
 const strategies = [Strategy.EXPERT, Strategy.SHARE, Strategy.EVENT];
 const stockTypes = [Stock.SHORT, Stock.LONG];
 
-const ClaimForm: FC = () => {
+type List = Address[];
+
+type SetState = React.Dispatch<React.SetStateAction<List>>;
+
+type Props = {
+  createdDaoList: List;
+  setCreatedDaoList: SetState;
+  createdABList: List;
+  setCreatedABList: SetState;
+};
+
+const ClaimForm = ({
+  createdABList,
+  setCreatedABList,
+  createdDaoList,
+  setCreatedDaoList,
+}: Props) => {
   const daoFactoryContract = useDaoFactory();
+  const { data: signer } = useSigner();
   const [creating, setCreating] = useState(false);
   const [currentStrategy, setCurrentStrategy] = useState<StrategyModule>(
     StrategyModule.EXPERT,
@@ -123,6 +142,35 @@ const ClaimForm: FC = () => {
     },
     [currentStockType, setCurrentStockType],
   );
+
+  const queryContractList = async () => {
+    if (!daoFactoryContract || !account || !signer) return;
+    const userIndex = (await daoFactoryContract.user_index(account)).toNumber();
+    const factoryCount = (await daoFactoryContract.factory_count()).toNumber();
+    const myDaoList = createdDaoList ?? [];
+    const myABList = createdABList ?? [];
+    for (let i = 1; i <= factoryCount; i++) {
+      if (i <= userIndex) {
+        const myArbitrageDao = await daoFactoryContract.user_arbitragedao(
+          account,
+          BigNumber.from(i),
+        );
+        const arbitrageDao = await daoFactoryContract.factory_arbitragedao(
+          BigNumber.from(i),
+        );
+        myDaoList.push(myArbitrageDao.arbitrage);
+        myABList.push(arbitrageDao.arbitrage);
+      }
+    }
+    console.log('my parti list: ', myDaoList, myABList);
+    setCreatedDaoList(() => [...myDaoList]);
+    setCreatedABList(() => [...myABList]);
+  };
+
+  useEffect(() => {
+    console.log('query contracts');
+    queryContractList();
+  }, [account, daoFactoryContract, signer]);
 
   return (
     <form onSubmit={handleClaim}>
