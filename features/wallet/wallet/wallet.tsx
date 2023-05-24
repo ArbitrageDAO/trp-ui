@@ -5,8 +5,6 @@ import {
   WalletCardComponent,
   FallbackWallet,
 } from 'features/wallet';
-// import { WalletLocked } from './wallet-locked';
-// import { WalletPeriod } from './wallet-period';
 import { WalletCardStyled } from './wallet.style';
 
 const WalletComponent: WalletCardComponent = (props) => {
