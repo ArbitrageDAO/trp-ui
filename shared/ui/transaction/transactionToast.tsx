@@ -1,5 +1,5 @@
 import { Link } from '@lidofinance/lido-ui';
-import { getEtherscanTxLink } from '@lido-sdk/helpers';
+// import { getEtherscanTxLink } from '@lido-sdk/helpers';
 import {
   TransactionDescriptionStyle,
   TransactionTitleStyle,
@@ -24,9 +24,8 @@ export const TransactionToastEtherscan: TransactionToastEtherscanComponent = (
   props,
 ) => {
   const { chainId, hash, children, ...rest } = props;
-  const etherscanLink =
-    chainId === 100 ? '' : getEtherscanTxLink(chainId, hash);
-
+  // const etherscanLink = getEtherscanTxLink(chainId, hash);
+  const etherscanLink = '';
   return (
     <TransactionToast {...rest}>
       {children && <div>{children}</div>}
