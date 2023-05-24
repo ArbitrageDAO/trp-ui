@@ -105,7 +105,7 @@ export const SnapshotForm = () => {
             Deposit
           </Button>
         ) : (
-          <ConnectButton />
+          <ConnectButton style={{ width: '100%' }} />
         )}
       </Form>
     </Block>

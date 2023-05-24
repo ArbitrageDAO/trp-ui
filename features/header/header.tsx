@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import Link from 'next/link';
+import { isMobile } from 'react-device-detect';
 import Logo from './logo';
 import {
   HeaderStyle,
@@ -57,7 +58,7 @@ export const Header: FC = () => {
 
       <HeaderActionsStyle>
         {/* <HeaderWallet /> */}
-        <RainbowButton showBalance chainSelector />
+        <RainbowButton showBalance={!isMobile} chainSelector />
       </HeaderActionsStyle>
     </HeaderStyle>
   );

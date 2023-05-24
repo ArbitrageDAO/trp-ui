@@ -1,25 +1,28 @@
-import { Accordion } from '@lidofinance/lido-ui';
 import { memo } from 'react';
+import { Block, Table, Thead, Tbody, Tr, Th, Td } from '@lidofinance/lido-ui';
 
 export const FAQ = memo(() => {
   return (
-    <>
-      <Accordion defaultExpanded summary="What is TRP?">
-        <p>
-          Lido Token Rewards Plan (TRP) is aimed at awarding Lido DAO
-          contributors with Lido Governance tokens (LDO) for their efforts and
-          long game with Lido DAO. Learn more{' '}
-          <a
-            href="https://research.lido.fi/t/lidodao-token-rewards-plan-trp/3364"
-            target="_blank"
-            rel="noreferrer"
-          >
-            here
-          </a>
-          .
-        </p>
-      </Accordion>
-    </>
+    <Block>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>name</Th>
+            <Th>address</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td>russell</Td>
+            <Td>0x18c4B872E0e547d052110507950bC098a62b3036</Td>
+          </Tr>
+          <Tr>
+            <Td>peter</Td>
+            <Td>0x18c4B872E0e547d052110507950bC098a62b3036</Td>
+          </Tr>
+        </Tbody>
+      </Table>
+    </Block>
   );
 });
 

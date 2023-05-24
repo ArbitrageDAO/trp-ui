@@ -65,15 +65,15 @@ export default function RainbowButton({
       account={account ?? ''}
       style={style}
     >
-      <RainbowBTN showBalance={showBalance} chainStatus="full" />
+      <RainbowBTN showBalance={showBalance} chainStatus="icon" />
     </Wrapper>
   );
 }
 
-export const ConnectButton = () => {
+export const ConnectButton = (props: Props) => {
   return (
     <ConnectWrapper>
-      <RainbowButton />
+      <RainbowButton {...props} />
     </ConnectWrapper>
   );
 };
@@ -86,8 +86,9 @@ const Wrapper = styled.div<{ chainSelector: string; account: string }>`
       chainSelector === '1' ? 'flex' : 'none'};
   }
   button {
-    width: ${({ chainSelector }) => (chainSelector ? 'auto' : '100%')};
+    width: ${({ chainSelector }) => (chainSelector === '1' ? 'auto' : '100%')};
     text-align: center !important;
+    opacity: 0.8;
     :hover {
       scale: 1 !important;
     }
