@@ -24,7 +24,8 @@ export const TransactionToastEtherscan: TransactionToastEtherscanComponent = (
   props,
 ) => {
   const { chainId, hash, children, ...rest } = props;
-  const etherscanLink = getEtherscanTxLink(chainId, hash);
+  const etherscanLink =
+    chainId === 100 ? '' : getEtherscanTxLink(chainId, hash);
 
   return (
     <TransactionToast {...rest}>
