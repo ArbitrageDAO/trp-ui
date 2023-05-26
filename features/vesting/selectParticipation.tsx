@@ -16,6 +16,7 @@ type Props = {
   setCurAddress: SetState<Address>;
   curParti: PartiOptions;
   setCurParti: SetState<PartiOptions>;
+  loading: boolean;
 };
 
 export default function SelectParticipation({
@@ -24,11 +25,13 @@ export default function SelectParticipation({
   curAddress,
   setCurAddress,
   curParti,
+  loading,
 }: // setCurParti,
 Props) {
   const [curList, setCurList] = useState<Address[]>(partiList);
   const updateList = useCallback(
     (parti?: PartiOptions) => {
+      console.log(parti);
       const isParti = (parti ?? curParti) === PartiOptions.PARTICIPATION;
       const newList = isParti ? partiList : nonPartiList;
       setCurList(newList);
@@ -38,8 +41,8 @@ Props) {
   );
 
   useEffect(() => {
-    updateList();
-  }, [partiList, nonPartiList, updateList]);
+    updateList(curParti);
+  }, [partiList, nonPartiList, updateList, curParti]);
 
   // const selectParti = (e: PartiOptions) => {
   //   setCurParti(e);
@@ -67,7 +70,7 @@ Props) {
         value={curAddress}
         onChange={(e) => selectAddress(e as Address)}
         disabled={!curList.length}
-        placeholder="Loading...."
+        placeholder={loading ? 'Loading....' : ''}
         arrow={isMobile ? 'small' : 'default'}
       >
         {curList.map((address) => (

@@ -15,8 +15,8 @@ export const getTokenByAddress = (address: string): string => {
 };
 
 export const ContractAddress: Record<string, Address> = {
-  ArbitrageDaoFactory: '0x978C8330eB9C0cADd98174CFF0dCd43509A1bb81',
-  pool: '0x7Dd5AC81bBaCd4af02604D597558C4ea2e703277',
+  ArbitrageDaoFactory: '0x8f87Ac9172E102c33eAA873546C8eA794D031B22',
+  pool: '0xF1C20E7E78665bb07bb78Ce15c0953D60f446B32',
   BTC: '0x1C2f71a40E7448Dd578C752b570D676284004048',
   // USDC: '0x9191806b17D80546013bB6dAB6e9709e778Bb130',
 };

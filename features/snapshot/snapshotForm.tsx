@@ -35,6 +35,7 @@ export default function SnapshotForm() {
   const [inputAmount, setInputAmount] = useState<number>(0);
   const [selectedCoin, setSelectedCoin] = useState<TOKENS>(TOKENS.BTC);
   const [stockType, setStockType] = useState<StockIndex>(StockIndex.SHORT);
+  const [loading, setLoading] = useState<boolean>(false);
   const {
     handleSubmit,
     formState: { isValid, errors },
@@ -50,7 +51,8 @@ export default function SnapshotForm() {
   };
 
   const queryPartiList = useCallback(async () => {
-    if (!daoFactoryContract || !account || !signer) return;
+    if (loading || !daoFactoryContract || !account || !signer) return;
+    setLoading(true);
     const userIndex = (await daoFactoryContract.user_index(account)).toNumber();
     const factoryCount = (await daoFactoryContract.factory_count()).toNumber();
     console.log('use index: ', userIndex, factoryCount);
@@ -67,14 +69,17 @@ export default function SnapshotForm() {
         );
         newPartiList.push(myArbitrageDao.arbitrage);
         console.log('my parti list: ', i, myArbitrageDao.arbitrage);
+      } else {
+        newNonPartiList.push(arbitrageDao.arbitrage);
       }
-      newNonPartiList.push(arbitrageDao.arbitrage);
+
       console.log('parti list: ', i, arbitrageDao.arbitrage);
     }
     setPartiList(() => newPartiList);
     setNonPartiList(() =>
       newNonPartiList.filter((addr) => !newPartiList.includes(addr)),
     );
+    setLoading(false);
   }, [daoFactoryContract, account, signer]);
 
   useEffect(() => {
@@ -96,9 +101,11 @@ export default function SnapshotForm() {
               }}
               label={opt}
               key={opt}
-              value={opt}
-              onChange={() => {
+              checked={curParti === opt}
+              onChange={(e) => {
                 //
+                console.log(opt, e.target.checked);
+                setCurParti(opt);
               }}
             />
           ))}
@@ -115,6 +122,7 @@ export default function SnapshotForm() {
             setCurParti={setCurParti}
             curAddress={curAddress}
             setCurAddress={setCurAddress}
+            loading={loading}
           />
         </InputGroupStyled>
         <InputsGroup
