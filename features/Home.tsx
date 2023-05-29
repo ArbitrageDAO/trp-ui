@@ -1,25 +1,18 @@
-import { useState } from 'react';
 import ClaimForm from 'features/claim';
 import { Section } from 'shared/ui/section';
 import { FAQ } from 'features/faq';
 import { Block } from '@lidofinance/lido-ui';
-import type { Address } from 'wagmi';
+import useQueryDaoList from 'features/hooks/useQueryDaoList';
 
 export default function Home() {
-  const [createdDaoList, setCreatedDaoList] = useState<Address[]>([]);
-  const [createdABList, setCreatedABList] = useState<Address[]>([]);
+  const { loading, myDaoList, refetch } = useQueryDaoList();
   return (
     <>
       <Block>
-        <ClaimForm
-          createdABList={createdABList}
-          setCreatedABList={setCreatedABList}
-          createdDaoList={createdDaoList}
-          setCreatedDaoList={setCreatedDaoList}
-        />
+        <ClaimForm refetch={refetch} />
       </Block>
       <Section title="DAO">
-        <FAQ createdABList={createdABList} createdDaoList={createdDaoList} />
+        <FAQ myDaoList={myDaoList} loading={loading} />
       </Section>
     </>
   );

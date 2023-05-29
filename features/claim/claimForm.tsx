@@ -33,23 +33,12 @@ import { BigNumber } from 'ethers';
 const strategies = [Strategy.EXPERT, Strategy.SHARE, Strategy.EVENT];
 const stockTypes = [Stock.SHORT, Stock.LONG];
 
-type List = Address[];
-
 type Props = {
-  createdDaoList: List;
-  setCreatedDaoList: SetState<List>;
-  createdABList: List;
-  setCreatedABList: SetState<List>;
+  refetch: () => void;
 };
 
-const ClaimForm = ({
-  createdABList,
-  setCreatedABList,
-  createdDaoList,
-  setCreatedDaoList,
-}: Props) => {
+const ClaimForm = ({ refetch }: Props) => {
   const daoFactoryContract = useDaoFactory();
-  const { data: signer } = useSigner();
   const [creating, setCreating] = useState(false);
   const [currentStrategy, setCurrentStrategy] = useState<StrategyModule>(
     StrategyModule.EXPERT,
@@ -104,7 +93,7 @@ const ClaimForm = ({
                   toastId: 'created',
                   position: 'top-center',
                 });
-                queryContractList();
+                refetch();
               })
               .catch((error: any) => {
                 errHandle(error);
@@ -141,44 +130,6 @@ const ClaimForm = ({
     },
     [currentStockType, setCurrentStockType],
   );
-
-  const queryContractList = async () => {
-    if (!daoFactoryContract || !account || !signer) return;
-    try {
-      const userIndex = (
-        await daoFactoryContract.user_index(account)
-      ).toNumber();
-      const factoryCount = (
-        await daoFactoryContract.factory_count()
-      ).toNumber();
-      const myDaoList = createdDaoList ?? [];
-      const myABList = createdABList ?? [];
-      for (let i = 1; i <= factoryCount; i++) {
-        if (i <= userIndex) {
-          const index = BigNumber.from(i);
-          const myArbitrageDao = await daoFactoryContract.user_arbitragedao(
-            account,
-            index,
-          );
-          const arbitrageDao = await daoFactoryContract.factory_arbitragedao(
-            index,
-          );
-          myDaoList.push(myArbitrageDao.arbitrage);
-          myABList.push(arbitrageDao.arbitrage);
-        }
-      }
-      console.log('my parti list: ', myDaoList, myABList);
-      setCreatedDaoList(() => [...myDaoList]);
-      setCreatedABList(() => [...myABList]);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    console.log('query contracts');
-    queryContractList();
-  }, [account, daoFactoryContract, signer]);
 
   return (
     <form onSubmit={handleClaim}>

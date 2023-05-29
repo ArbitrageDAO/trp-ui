@@ -1,18 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Block, Button, Checkbox } from '@lidofinance/lido-ui';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { InputGroupStyled } from 'shared/ui';
-// import { InputAmount } from 'shared/ui/inputAmount';
 import { Form } from './snapshotFormStyles';
 import SelectParticipation from 'features/vesting/selectParticipation';
-import { useAccount, useSigner } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { ConnectButton } from 'features/wallet/RainbowKit/RainbowButton';
 import InputsGroup from 'features/vesting/inputsGroup';
-import useDaoFactory from 'features/claim/useDaoFactory';
 import type { Address } from 'wagmi';
-import { BigNumber } from 'ethers';
 import { PartiOptions, TOKENS, StockIndex } from 'config';
+import useQueryDaoList from 'features/hooks/useQueryDaoList';
 
 type SnapshotFormData = {
   delegateAddress: string;
@@ -24,67 +22,41 @@ const partiOptions = [
 ];
 
 export default function SnapshotForm() {
-  const { data: signer } = useSigner();
   const { address: account } = useAccount();
-  const [partiList, setPartiList] = useState<Address[]>([]);
-  const [nonPartiList, setNonPartiList] = useState<Address[]>([]);
   const [curParti, setCurParti] = useState<PartiOptions>(
     PartiOptions.PARTICIPATION,
   );
-  const [curAddress, setCurAddress] = useState<Address>(partiList[0]);
+  const { loading, refetch, myDaoList, daoList } = useQueryDaoList();
   const [inputAmount, setInputAmount] = useState<number>(0);
   const [selectedCoin, setSelectedCoin] = useState<TOKENS>(TOKENS.BTC);
   const [stockType, setStockType] = useState<StockIndex>(StockIndex.SHORT);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [curAddress, setCurAddress] = useState<Address>();
+  const [list, setList] = useState<Address[]>();
+
   const {
     handleSubmit,
     formState: { isValid, errors },
   } = useForm<SnapshotFormData>({ mode: 'onChange' });
 
-  const daoFactoryContract = useDaoFactory();
-
   const runTransaction = (data: SnapshotFormData) => {
-    // const { delegateAddress } = data;
-    // const callData = await encodeCalldata(delegateAddress);
-    // await snapshotDelegate(callData);
-    console.log(data);
+    console.log('submit: ', data);
   };
 
-  const queryPartiList = useCallback(async () => {
-    if (loading || !daoFactoryContract || !account || !signer) return;
-    setLoading(true);
-    const userIndex = (await daoFactoryContract.user_index(account)).toNumber();
-    const factoryCount = (await daoFactoryContract.factory_count()).toNumber();
-    console.log('use index: ', userIndex, factoryCount);
-    const newPartiList = partiList ?? [];
-    const newNonPartiList = nonPartiList ?? [];
-    for (let i = 1; i <= factoryCount; i++) {
-      const arbitrageDao = await daoFactoryContract.factory_arbitragedao(
-        BigNumber.from(i),
-      );
-      if (i <= userIndex) {
-        const myArbitrageDao = await daoFactoryContract.user_arbitragedao(
-          account,
-          BigNumber.from(i),
-        );
-        newPartiList.push(myArbitrageDao.arbitrage);
-        console.log('my parti list: ', i, myArbitrageDao.arbitrage);
-      } else {
-        newNonPartiList.push(arbitrageDao.arbitrage);
-      }
-
-      console.log('parti list: ', i, arbitrageDao.arbitrage);
-    }
-    setPartiList(() => newPartiList);
-    setNonPartiList(() =>
-      newNonPartiList.filter((addr) => !newPartiList.includes(addr)),
-    );
-    setLoading(false);
-  }, [daoFactoryContract, account, signer]);
+  useEffect(() => {
+    refetch();
+  }, [curParti]);
 
   useEffect(() => {
-    queryPartiList();
-  }, [daoFactoryContract, account, queryPartiList]);
+    const isParti = curParti === PartiOptions.PARTICIPATION;
+    const newList = isParti
+      ? myDaoList
+      : daoList?.filter((item) => {
+          if (!myDaoList?.length) return true;
+          return !myDaoList.includes(item);
+        });
+    console.log('--------------get list. ', curParti, newList);
+    setList(newList);
+  }, [myDaoList, daoList, curParti]);
 
   return (
     <Block>
@@ -104,7 +76,7 @@ export default function SnapshotForm() {
               checked={curParti === opt}
               onChange={(e) => {
                 //
-                console.log(opt, e.target.checked);
+                console.log('change tab: ', opt, e.target.checked);
                 setCurParti(opt);
               }}
             />
@@ -116,10 +88,7 @@ export default function SnapshotForm() {
           error={errors.delegateAddress?.message?.toString()}
         >
           <SelectParticipation
-            partiList={partiList}
-            nonPartiList={nonPartiList}
-            curParti={curParti}
-            setCurParti={setCurParti}
+            list={list}
             curAddress={curAddress}
             setCurAddress={setCurAddress}
             loading={loading}
