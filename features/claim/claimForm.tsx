@@ -19,7 +19,7 @@ import {
 import { InputGroupStyled } from 'shared/ui';
 import { ConnectButton } from 'features/wallet/RainbowKit/RainbowButton';
 import { useAccount, useSigner } from 'wagmi';
-import useDaoFactory from './useDaoFactory';
+import useDaoFactory from '../hooks/useDaoFactory';
 import {
   ContractAddress,
   Stock,
@@ -27,7 +27,6 @@ import {
   Strategy,
   StrategyModule,
 } from 'config';
-import type { Address } from 'wagmi';
 import { BigNumber } from 'ethers';
 
 const strategies = [Strategy.EXPERT, Strategy.SHARE, Strategy.EVENT];
@@ -77,8 +76,10 @@ const ClaimForm = ({ refetch }: Props) => {
         daoFactoryContract
           .deploy(
             ContractAddress.pool,
-            currentStockType as any,
-            currentStrategy as any,
+            BigNumber.from(currentStockType),
+            BigNumber.from(currentStrategy),
+            // currentStockType as any,
+            // currentStrategy as any,
             {
               from: account,
             },

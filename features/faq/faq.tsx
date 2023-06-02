@@ -13,33 +13,49 @@ import styled from 'styled-components';
 import type { Address } from 'wagmi';
 
 type Props = {
-  myDaoList?: Address[];
+  myArbitrageList?: Address[];
   loading?: boolean;
+  abMap: {
+    dao: Address;
+    arbitrage: Address;
+  }[];
 };
 
-export const FAQ = memo(({ myDaoList, loading }: Props) => {
+export const FAQ = memo(({ myArbitrageList, loading, abMap }: Props) => {
   return (
     <Block>
       <StyledTable style={{ width: '100%', textAlign: 'center' }}>
         <Thead>
           <Tr>
-            <Th>Address</Th>
+            <Th>Arbitrage</Th>
+            <Th>Dao</Th>
           </Tr>
         </Thead>
         <Tbody>
           {!loading &&
-            myDaoList &&
-            myDaoList?.length > 0 &&
-            myDaoList.map((item) => (
-              <Tr key={item}>
-                <Td>
-                  <ShortHash address={item} symbols={8} as="a" title={item} />
-                </Td>
-              </Tr>
-            ))}
+            myArbitrageList &&
+            myArbitrageList?.length > 0 &&
+            myArbitrageList.map((item) => {
+              const index = abMap?.findIndex((ab) => ab.arbitrage === item);
+              return (
+                <Tr key={item}>
+                  <Td>
+                    <ShortHash address={item} symbols={8} as="a" title={item} />
+                  </Td>
+                  <Td>
+                    <ShortHash
+                      address={abMap[index].dao}
+                      symbols={8}
+                      as="a"
+                      title={abMap[index].dao}
+                    />
+                  </Td>
+                </Tr>
+              );
+            })}
         </Tbody>
       </StyledTable>
-      {!loading && !myDaoList?.length && (
+      {!loading && !myArbitrageList?.length && (
         <div style={{ marginTop: 10, textAlign: 'center' }}>None</div>
       )}
       {loading && (
