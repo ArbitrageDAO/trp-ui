@@ -12,6 +12,7 @@ type Props = {
   stockType: StockIndex;
   inputAmount: number;
   setInputAmount: SetState<number>;
+  isClosed: boolean;
 };
 
 export default function InputsGroup({
@@ -19,12 +20,14 @@ export default function InputsGroup({
   stockType,
   inputAmount,
   setInputAmount,
+  isClosed,
 }: Props) {
   return (
     <Wrapper fullwidth error={null} style={{ height: 56 }}>
       <Input readOnly value={coin} />
       <Input readOnly value={types[stockType]} />
       <InputAmountStyled
+        visibility={isClosed ? 'hidden' : 'visible'}
         rightDecorator={
           <Button size="xxs" variant="translucent" color="secondary">
             $
@@ -38,6 +41,8 @@ export default function InputsGroup({
             setInputAmount(num);
           }
         }}
+        placeholder={isClosed ? '-' : ''}
+        disabled={!isClosed}
       />
     </Wrapper>
   );
@@ -45,6 +50,7 @@ export default function InputsGroup({
 
 const Wrapper = styled(InputGroupStyled)`
   height: 56px;
+  visibility: '';
   label {
     flex: initial;
     width: 25%;

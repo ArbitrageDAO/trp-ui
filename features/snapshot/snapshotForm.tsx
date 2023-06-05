@@ -77,6 +77,8 @@ export default function SnapshotForm() {
     formState: { isValid, errors },
   } = useForm<SnapshotFormData>({ mode: 'onChange' });
 
+  const isParti = curParti === PartiOptions.PARTICIPATION;
+
   const errHandle = (e: any, mark?: string) => {
     const msg = e?.reason || JSON.stringify(e || {}) || 'Error';
     console.log('===>>> error ', msg, mark, ' --->', e);
@@ -128,6 +130,7 @@ export default function SnapshotForm() {
                 toastId: 'created',
                 position: 'top-center',
               });
+              refetch();
               refetchInfo();
               setTrading(false);
             })
@@ -155,6 +158,7 @@ export default function SnapshotForm() {
           tx.wait(3)
             .then((res) => {
               console.log('提取成功: ', res);
+              refetch();
               ToastSuccess('Withdraw Successfully.', {
                 delay: 0,
                 toastId: 'created',
@@ -175,7 +179,6 @@ export default function SnapshotForm() {
   }, [curParti]);
 
   useEffect(() => {
-    const isParti = curParti === PartiOptions.PARTICIPATION;
     const newList = isParti
       ? myArbitrageList
       : arbitrageList?.filter((item) => {
@@ -191,8 +194,8 @@ export default function SnapshotForm() {
     if (!isClosed) {
       if (timer) clearInterval(timer);
       timer = setInterval(() => {
-        // refetchInfo();
-      }, 3000);
+        refetchInfo();
+      }, 5000);
     } else {
       clearInterval(timer);
     }
@@ -218,7 +221,6 @@ export default function SnapshotForm() {
               key={opt}
               checked={curParti === opt}
               onChange={(e) => {
-                //
                 console.log('change tab: ', opt, e.target.checked);
                 setCurParti(opt);
               }}
@@ -242,6 +244,7 @@ export default function SnapshotForm() {
           setInputAmount={setInputAmount}
           coin={symbolA || TOKENS.BTC}
           stockType={Number(stock) > 0 ? StockIndex.LONG : StockIndex.SHORT}
+          isClosed={isClosed}
         />
         {account ? (
           <Button
@@ -249,7 +252,7 @@ export default function SnapshotForm() {
             disabled={!isValid || !curAddress}
             loading={trading}
           >
-            {isClosed ? 'Withdraw' : 'Deposit'}
+            {isClosed && isParti ? 'Withdraw' : 'Deposit'}
           </Button>
         ) : (
           <ConnectButton style={{ width: '100%' }} />

@@ -44,7 +44,7 @@ export default function useDaoInfo({ dao, arbitrage }: Props) {
     const isLong = (await uniFactoryContract.stock_index()).toNumber();
     const closed = (await uniFactoryContract.close_stock()).toNumber();
     setPool(poolAddress);
-    setStock(isLong);
+    setStock(() => isLong);
     setIsClosed(Boolean(closed));
     const strategy = await govDaoFactoryContract.strategy();
     const priceInfo = await priceFactoryContract.prices(strategy);
@@ -53,7 +53,7 @@ export default function useDaoInfo({ dao, arbitrage }: Props) {
     stop = true;
     console.log(
       '---- dao info: ',
-      stock,
+      isLong,
       dao,
       arbitrage,
       poolAddress,
